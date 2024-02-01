@@ -1,6 +1,4 @@
-
 #include "lab0.h"
-
 
 myRectangle::myRectangle() {
     length = 0;
