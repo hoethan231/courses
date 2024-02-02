@@ -1,6 +1,8 @@
 #ifndef Time_HPP_
 #define Time_HPP_
 
+#include <ostream>
+using namespace std;
 class Time {
 
     private:
@@ -11,10 +13,10 @@ class Time {
         Time();
         Time(int);
         Time(int, int);
-        Time operator+(Time);
+        Time operator+(const Time);
         Time operator+(int);
-        Time operator=(Time);
-        friend ostream& operator<<(ostream&, Time);
+        Time& operator=(const Time&);
+        friend ostream& operator<<(ostream&, const Time&);
 
 };
 #endif

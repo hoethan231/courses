@@ -1,10 +1,10 @@
 #include <iostream>
-#include "time.cpp"
+#include "time.hpp"
 using namespace std;
 
 int main() {
 
-    Time t1();
+    Time t1{};
     Time t2(3);
     Time t3(5,10);
     int minute = 10;

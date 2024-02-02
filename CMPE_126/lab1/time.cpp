@@ -1,11 +1,8 @@
-#include "time.h"
+#include "time.hpp"
 #include <iostream>
 using namespace std;
 
-Time::Time() {
-    hour = 0;
-    minute = 0;
-}
+Time::Time() : hour(0), minute(0) {}
 
 Time::Time(int hour) {
     if(hour < 0 || hour > 24) {
@@ -25,7 +22,6 @@ Time::Time(int hour, int minute) {
     }
     else {
         this->hour = hour;
-        this->minute = 0;
     }
     if(minute < 0 || minute > 59) {
         cout << "Minutes should be between 0 and 59" << endl;
@@ -36,25 +32,29 @@ Time::Time(int hour, int minute) {
     }
 }
 
-Time Time::operator+(Time time2) {
+Time Time::operator+(const Time time2) {
     Time temp;
-    temp.hour, temp.minute = (this->hour + time2.hour) % 24, (this->minute + time2.minute) % 60;
+    temp.hour = (this->hour + time2.hour) % 24;
+    temp.minute = (this->minute + time2.minute) % 60;
     return temp;
 }
 
 Time Time::operator+(int min) {
     Time temp;
-    temp.hour, temp.minute = (this->hour + (min / 60)) % 24, (this->minute + (min % 60)) % 60;
+    temp.hour = (this->hour + (min / 60)) % 24;
+    temp.minute = (this->minute + (min % 60)) % 60;
     return temp;
 }
 
-Time Time::operator=(Time other) {
-    this->hour = other.hour;
-    this->minute = other.minute;
+Time& Time::operator=(const Time& other) {
+    if (this != &other) {
+        this->hour = other.hour;
+        this->minute = other.minute;
+    }
     return *this;
 }
 
-ostream& operator<<(ostream& os, Time time) {
-    os << time.hour << ":" << time.minute << endl;
+ostream& operator<<(ostream& os, const Time& time) {
+    os << (time.hour == 0 ? 12 : time.hour) << ":" << (time.minute < 10 ? "0" : "") << (time.minute == 0 ? "0" : to_string(time.minute)) << endl;
     return os;
 }
