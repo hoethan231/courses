@@ -1,0 +1,32 @@
+
+Task 1:
+    1. For the first task, I was required to use three constructors to support the parameters of default, int, and int int;
+        I believe that one constructor is not enough because then it would not be able to take all the types;
+
+    2. The difference between line 5 and 6 is that it 
+
+    3. Yes I had to overload the +, =, and << modulos in order to support operations on the Time class;
+
+    4. I had to overload the + operator to accept integers in the Time class;
+        If we tried minute + t3, there would be no problem as long as I have the overloaded method;
+
+Task 2:
+    1. For the second task, I only have one constructor and believe it is enough to accpet the string string;
+        There is no default constrctor needed because there can be no defualt values for the src and dest;
+
+    2. I did need to overload the assignement operator in order to set the new time;
+        This is because I had to create a new temporary Time object and set its values to the new time;
+        Only after that could I assign the old DepartureTime to the temporary time.
+
+    3. There is no need for input validation on line three because it is just a string for the airport;
+        There is also no need for input validation on line four because it is already in the Time clas;
+        Line seven is also checked in Time class;
+
+Sources:
+
+    Ternary Operator: https://www.w3schools.com/cpp/cpp_conditions_shorthand.asp
+    Overloading Operators: https://learn.microsoft.com/en-us/cpp/standard-library/overloading-the-output-operator-for-your-own-classes?view=msvc-170
+    to_string method: https://www.geeksforgeeks.org/stdto_string-in-cpp/
+    
+
+
