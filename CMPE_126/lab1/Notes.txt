@@ -3,7 +3,8 @@ Task 1:
     1. For the first task, I was required to use three constructors to support the parameters of default, int, and int int;
         I believe that one constructor is not enough because then it would not be able to take all the types;
 
-    2. The difference between line 5 and 6 is that it 
+    2. The difference between line 5 and 6 is that line 7 requires chaining togetther multiple output operations;
+        Both require an overloaded method to support this;
 
     3. Yes I had to overload the +, =, and << modulos in order to support operations on the Time class;
 
@@ -27,6 +28,6 @@ Sources:
     Ternary Operator: https://www.w3schools.com/cpp/cpp_conditions_shorthand.asp
     Overloading Operators: https://learn.microsoft.com/en-us/cpp/standard-library/overloading-the-output-operator-for-your-own-classes?view=msvc-170
     to_string method: https://www.geeksforgeeks.org/stdto_string-in-cpp/
-    
+
 
 
