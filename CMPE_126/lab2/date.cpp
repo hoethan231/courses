@@ -73,6 +73,8 @@ ostream& operator<<(ostream& os, Date date) {
     return os;
 }
 
+DateOfBirth::DateOfBirth() : Date() {}
+
 DateOfBirth::DateOfBirth(int m, int d, int y) : Date(m, d, y) {}
 
 DateOfBirth::DateOfBirth(Date date) : Date(date) {}

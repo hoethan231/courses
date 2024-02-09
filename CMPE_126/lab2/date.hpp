@@ -27,8 +27,8 @@ class DateOfBirth : public Date {
     private:
         Date date;
     public:
+        DateOfBirth();
         DateOfBirth(int, int, int);
-
         DateOfBirth(Date);
         int getAge();
 
