@@ -24,6 +24,6 @@ void Ticket::updateFlight(Flight f) {
 }
 
 ostream& operator<<(ostream& os, Ticket t) {
-    os << t.getFlight() << "for " << t.getPassenger();
+    os << t.getFlight() << "for " << (t.getPassenger());
     return os;
 }

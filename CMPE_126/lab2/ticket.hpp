@@ -1,7 +1,7 @@
 #ifndef Ticket_HPP_
 #define Ticket_HPP_
 #include "passenger.hpp"
-#include "./lab1/flight.hpp"
+#include "../lab1/flight.hpp"
 
 class Ticket {
 

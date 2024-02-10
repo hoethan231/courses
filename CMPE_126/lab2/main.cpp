@@ -1,8 +1,9 @@
 #include <iostream>
 #include "date.cpp"
 #include "passenger.cpp"
-#include "flight.cpp"
-#include "./lab1/flight.cpp"
+#include "../lab1/flight.cpp"
+#include "../lab1/time.cpp"
+#include "ticket.cpp"
 #include <iostream>
 using namespace std;
 
@@ -38,7 +39,7 @@ int main(){
 
     //Task 3
     Ticket ticket(p1, f1);
-    cout << ticket << endl;
+    cout << ticket;
     p1.setFareDiscount(0.5);
     ticket.updateFare();
     cout << ticket.getFare();
