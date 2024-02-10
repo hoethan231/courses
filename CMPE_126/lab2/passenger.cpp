@@ -47,7 +47,7 @@ void Passenger::setFareDiscount(double discount) {
 }
 
 ostream& operator<<(ostream& os, Passenger pass) {
-    os << pass.first_name << " " << pass.last_name << " was born on " << pass.DOB << endl;
+    os << pass.first_name << " " << pass.last_name << ", born on " << pass.DOB << endl;
     return os;
 }
 
