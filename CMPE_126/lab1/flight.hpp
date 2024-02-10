@@ -13,7 +13,8 @@ class Flight {
         Date dateOfTravel;
 
     public:
-        Flight(string, string, double);
+        Flight(string, string, double, Date&);
+        Flight(string, string, Date&);
         void setDepartureTime(int, int);
         void setDepartureTime(Time);
         void setDateOfTravel(Date);
