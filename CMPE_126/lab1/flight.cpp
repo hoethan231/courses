@@ -1,6 +1,6 @@
 #include "flight.hpp"
 
-Flight::Flight(string SRC, string DEST) : src(SRC), dest(DEST), DepartureTime(0,0) {}
+Flight::Flight(string SRC, string DEST, double baseFare) : src(SRC), dest(DEST), DepartureTime(0,0), baseFare(baseFare), dateOfTravel() {}
 
 void Flight::setDepartureTime(int hour, int minute) {
     Time temp(hour, minute);
@@ -8,6 +8,14 @@ void Flight::setDepartureTime(int hour, int minute) {
 }
 void Flight::setDepartureTime(Time time) {
     DepartureTime = time;
+}
+
+void Flight::setDateOfTravel(Date d) {
+    this->dateOfTravel = d;
+}
+
+double Flight::getBaseFare() {
+    return baseFare;
 }
 
 ostream& operator<<(ostream& os, const Flight& flight) {
