@@ -1,0 +1,22 @@
+
+Task 1:
+    1. I used two constructors for the Date class as there needs to be a default constructor;
+        And one for the int, int, int; 
+    2. The difference between line three and four would be how the Date of Birth object was initialized;
+        Line three passes in three ints for the three days while the fourth line just takes a Date object;
+    3. I am doing input validation in my Date and DOB classes as my setters methods check wheter the dates are within a valid range;
+        Instead of repeating the code in the constructors, I simple called my setters in my constutors as well;
+    4. Perhaps a better way to implement getAge without a variable holding today's date would to be maybe making an api call for today's date;
+
+Task 2:
+    1. I only needed one constructor for this class which was a string, string, DateOfBirth;
+        I did not need a default constructor as there cannkot be a default for a person;
+    2. The fare_discount is important especially for guest of younger age as discounts can be given to those below a certain age;
+        I interpret the field as a percentage between 0 and 1 that can be multiplied by the fare cost to see the new price;
+
+Task 3:
+    1. I only needed one constructor which was for Passenger, Flight as that is all the ticket class needs;
+    2. I in the case of this problem, multiple classes and inheritance was vital in the production of effective code;
+        Object orientieted code aids with the reusing of code in a clean manner. I was able to derive many of my previous classes;
+        into newer versions of similar use; 
+
