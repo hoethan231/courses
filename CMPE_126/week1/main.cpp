@@ -8,5 +8,8 @@ int main() {
     cout << "The Magnitude is: " << vect.getMag() << endl;
     cout << "The Direction is: " << vect.getDir() << endl;
 
+    
+
     return 0;
 }
+

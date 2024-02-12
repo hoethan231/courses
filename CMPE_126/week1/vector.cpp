@@ -33,3 +33,9 @@ double Vector::getMag() {
 double Vector::getDir() {
     return atan(y/x);
 }
+
+scalerVector::scalerVector(int x, int y, int scaler) {
+    this->x = x;
+    this->y = y;
+    this->scaler = scaler;
+}
