@@ -1,5 +1,7 @@
+#include <iostream>
 #include "vector.h"
 #include <cmath>
+using namespace std;
 
 Vector::Vector() {
     x = 0;
@@ -34,8 +36,16 @@ double Vector::getDir() {
     return atan(y/x);
 }
 
+void Vector::print() {
+    cout << "This is a Vector" << endl;
+}
+
 scalerVector::scalerVector(int x, int y, int scaler) {
     this->x = x;
     this->y = y;
     this->scaler = scaler;
+}
+
+void scalerVector::print() {
+    cout << "This is a Scaler Vector" << endl;
 }

@@ -18,6 +18,7 @@ class Vector {
         void setY(int);
         double getMag();
         double getDir();
+        virtual void print();
 
 };
 
@@ -25,5 +26,6 @@ class scalerVector: public Vector {
 
     public: 
         scalerVector(int, int, int);
+        void print();
         
 };
