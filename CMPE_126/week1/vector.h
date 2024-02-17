@@ -1,4 +1,5 @@
 #pragma once
+#include <ostream>
 
 class Vector {
 
@@ -11,7 +12,6 @@ class Vector {
 
     public:
         int x, y;
-
         Vector();
         Vector(int, int);
         void setX(int);
@@ -19,6 +19,8 @@ class Vector {
         double getMag();
         double getDir();
         virtual void print();
+        friend ostream& operator+(ostream&, Vector);
+        
 
 };
 
