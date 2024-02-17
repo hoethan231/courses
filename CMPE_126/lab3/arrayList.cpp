@@ -33,10 +33,15 @@ int ArrayList::maxListSize() const {
 }
 
 void ArrayList::print() {
-    for(int i=0; i<size;i++) {
-        cout << array[i] << " ";
+
+    cout << "[";
+    for(int i=0; i<numOfElements;i++) {
+        cout << array[i];
+        if(!(i==numOfElements-1)) {
+            cout << ", ";
+        }
     }
-    cout << endl;
+    cout << "]" << endl;
 }
 
 void ArrayList::expand() {
@@ -52,6 +57,7 @@ void ArrayList::expand() {
 bool ArrayList::isItemAtEqual(int i, int num) {
     if(i < 0 || i > size-1) {
         cout << "index is out of bounds" << endl;
+        return false;
     }
     else { 
         return array[i] == num; 
@@ -74,7 +80,7 @@ void ArrayList::insertAt(int i, int num) {
 
 void ArrayList::insertEnd(int num) {
     if(isFull()) { expand(); }
-    array[size-1] = num;
+    array[numOfElements] = num;
     numOfElements++;
 }
 
