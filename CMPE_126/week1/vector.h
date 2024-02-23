@@ -1,5 +1,4 @@
 #pragma once
-#include <ostream>
 
 class Vector {
 
@@ -9,19 +8,21 @@ class Vector {
 
     protected:
         int scaler;
+        int x;
+        int y;
 
     public:
-        int x, y;
         Vector();
         Vector(int, int);
+        int getX();
+        int getY();
         void setX(int);
         void setY(int);
         double getMag();
         double getDir();
         virtual void print();
-        friend ostream& operator+(ostream&, Vector);
-        
-
+        friend Vector operator+(Vector, Vector);
+        friend Vector operator-(Vector, Vector);
 };
 
 class scalerVector: public Vector {

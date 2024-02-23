@@ -18,14 +18,20 @@ void Vector::update() {
     this->y = y;
 }
 
+int Vector::getX() {
+    return this->x;
+}
+
+int Vector::getY() {
+    return this->y;
+}
+
 void Vector::setX(int X) {
-    x = X;
-    update();
+    this->x = X;
 }
 
 void Vector::setY(int Y) {
-    y = Y;
-    update();
+    this->y = Y;
 }
 
 double Vector::getMag() {
@@ -38,6 +44,18 @@ double Vector::getDir() {
 
 void Vector::print() {
     cout << "This is a Vector" << endl;
+}
+
+Vector operator+(Vector v1, Vector v2) {
+    int x = v1.getX() + v2.getX();
+    int y = v1.getY() + v2.getY();
+    return Vector(x,y);
+}
+
+Vector operator-(Vector v1, Vector v2) {
+    int x = v1.getX() - v2.getX();
+    int y = v1.getY() - v2.getY();
+    return Vector(x,y);
 }
 
 scalerVector::scalerVector(int x, int y, int scaler) {
