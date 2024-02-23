@@ -2,31 +2,32 @@
 #include <iostream>
 using namespace std;
 
+template <typename e>
 class ArrayList {
 
     private:
 
         int size;
         int numOfElements;
-        int* array;
+        e* array;
         void expand();
 
     public:
 
-        ArrayList(); //
-        ArrayList(int); //
+        ArrayList();
+        ArrayList(int);
         ~ArrayList();
-        bool isEmpty() const; //
-        bool isFull() const; //
-        int listSize() const; //
-        int maxListSize() const; //
-        void print(); //
-        bool isItemAtEqual(int, int);//
-        void insertAt(int, int); //
-        void insertEnd(int); // 
-        void removeAt(int); //
-        int retreiveAt(int); //
-        void replaceAt(int, int); //
+        bool isEmpty() const;
+        bool isFull() const;
+        int listSize() const;
+        int maxListSize() const;
+        void print();
+        bool isItemAtEqual(int, e);//
+        void insertAt(int, e);
+        void insertEnd(e); 
+        void removeAt(int);
+        e retreiveAt(int);
+        void replaceAt(int, e);
         void clearList();
         ArrayList& operator=(ArrayList&);
 

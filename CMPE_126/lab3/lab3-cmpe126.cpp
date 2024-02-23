@@ -3,8 +3,8 @@
 
 int main() {
 
-    ArrayList arr1;
-    ArrayList arr2(20);
+    ArrayList<int> arr1;
+    ArrayList<int> arr2(20);
 
     cout << endl << "Is array one empty: " << arr1.isEmpty() << endl;
     cout << "Is array one full: " << arr1.isFull() << endl << endl;

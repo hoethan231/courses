@@ -1,38 +1,47 @@
 #include "arrayList.hpp"
 
-ArrayList::ArrayList() {
+template<typename e>
+
+ArrayList<e>::ArrayList() {
     this->size = 10;
     this->numOfElements = 0;
-    this->array = new int[size];
+    this->array = new e[size];
 }
 
-ArrayList::ArrayList(int size) {
+template<typename e>
+ArrayList<e>::ArrayList(int size) {
     this->size = size;
     this->numOfElements = 0;
-    this->array = new int[size];
+    this->array = new e[size];
 }
 
-ArrayList::~ArrayList() {
+template<typename e>
+ArrayList<e>::~ArrayList() {
     delete[] array;
 }
 
-bool ArrayList::isEmpty() const {
+template<typename e>
+bool ArrayList<e>::isEmpty() const {
     return numOfElements == 0;
 }
 
-bool ArrayList::isFull() const {
+template<typename e>
+bool ArrayList<e>::isFull() const {
     return numOfElements == size;
 }
 
-int ArrayList::listSize() const {
+template<typename e>
+int ArrayList<e>::listSize() const {
     return this->numOfElements;
 }
 
-int ArrayList::maxListSize() const {
+template<typename e>
+int ArrayList<e>::maxListSize() const {
     return this->size;
 }
 
-void ArrayList::print() {
+template<typename e>
+void ArrayList<e>::print() {
 
     cout << "[";
     for(int i=0; i<numOfElements;i++) {
@@ -44,9 +53,10 @@ void ArrayList::print() {
     cout << "]" << endl;
 }
 
-void ArrayList::expand() {
-    int* newArray = new int[size*2];
-    for(int i=0; i<size; i++) {
+template<typename e>
+void ArrayList<e>::expand() {
+    e* newArray = new int[size*2];
+    for(int i=0; i<numOfElements; i++) {
         newArray[i] = array[i];
     }
     delete[] array;
@@ -54,8 +64,9 @@ void ArrayList::expand() {
     array = newArray;
 }
 
-bool ArrayList::isItemAtEqual(int i, int num) {
-    if(i < 0 || i > size-1) {
+template<typename e>
+bool ArrayList<e>::isItemAtEqual(int i, e num) {
+    if(i < 0 || i > numOfElements-1) {
         cout << "index is out of bounds" << endl;
         return false;
     }
@@ -64,8 +75,9 @@ bool ArrayList::isItemAtEqual(int i, int num) {
     }
 }
 
-void ArrayList::insertAt(int i, int num) {
-    if(i < 0 || i > size-1) {
+template<typename e>
+void ArrayList<e>::insertAt(int i, e num) {
+    if(i < 0 || i > numOfElements-1) {
         cout << "index is out of bounds" << endl;
     }
     else { 
@@ -78,13 +90,15 @@ void ArrayList::insertAt(int i, int num) {
     }   
 }
 
-void ArrayList::insertEnd(int num) {
+template<typename e>
+void ArrayList<e>::insertEnd(e num) {
     if(isFull()) { expand(); }
     array[numOfElements] = num;
     numOfElements++;
 }
 
-void ArrayList::removeAt(int i) {
+template<typename e>
+void ArrayList<e>::removeAt(int i) {
     if(i < 0 || i > numOfElements) {
         cout << "index is out of bounds" << endl;
         return;
@@ -97,8 +111,9 @@ void ArrayList::removeAt(int i) {
     } 
 }
 
-int ArrayList::retreiveAt(int i) {
-    if(i < 0 || i > size-1) {
+template<typename e>
+e ArrayList<e>::retreiveAt(int i) {
+    if(i < 0 || i > numOfElements-1) {
         cout << "index is out of bounds" << endl;
         return 0;
     }
@@ -107,8 +122,9 @@ int ArrayList::retreiveAt(int i) {
     } 
 }
 
-void ArrayList::replaceAt(int i, int num) {
-    if(i < 0 || i > size-1) {
+template<typename e>
+void ArrayList<e>::replaceAt(int i, e num) {
+    if(i < 0 || i > numOfElements-1) {
         cout << "index is out of bounds" << endl;
     }
     else { 
@@ -116,11 +132,13 @@ void ArrayList::replaceAt(int i, int num) {
     } 
 }
 
-void ArrayList::clearList() {
+template<typename e>
+void ArrayList<e>::clearList() {
     numOfElements = 0;
 }
 
-ArrayList& ArrayList::operator=(ArrayList& arr) {
+template<typename e>
+ArrayList<e>& ArrayList<e>::operator=(ArrayList<e>& arr) {
 
     delete[] this->array;
 
