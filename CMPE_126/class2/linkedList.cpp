@@ -1,27 +1,26 @@
 #include "linkedList.hpp"
+#include "sortedLinkedList.hpp"
 #include <iostream>
 using namespace std;
+
+template <typename T>
+Node<T>::Node() : data(T()), next(nullptr) {}
 
 template <typename T>
 Node<T>::Node(T data) : data(data), next(nullptr) {}
 
 template <typename T>
-Node<T>::Node(T data, Node next) : data(data), next(next) {}
+Node<T>::Node(T data, Node<T>* next) : data(data), next(next) {}
 
 template <typename T>
-LinkedList<T>::LinkedList() : head(nullptr), tail(nullptr) {}
+Node<T>::~Node() {}
 
 template <typename T>
-LinkedList<T>::LinkedList(T arr[]) {
-    for(T element : arr) {
-        insertEnd(element);
-    }
-}
+LinkedList<T>::LinkedList() : head(nullptr), tail(nullptr), size(0), capacity(100) {}
 
 template <typename T>
 LinkedList<T>::~LinkedList() {
-    delete head;
-    delete tail;
+    clearList();
 }
 
 template <typename T>
@@ -31,9 +30,7 @@ bool LinkedList<T>::isEmpty() const {
 
 template <typename T>
 bool LinkedList<T>::isFull() const {
-
-    
-
+    return size == capacity;
 }
 
 template <typename T>
@@ -43,7 +40,7 @@ int LinkedList<T>::listSize() const {
 
 template <typename T>
 int LinkedList<T>::maxListSize() const {
-    
+    return capacity;
 }
 
 template <typename T>
@@ -53,6 +50,7 @@ void LinkedList<T>::print() {
         cout << curr->data << " ~~ ";
         curr = curr->next;
     }
+    cout << endl;
 }
 
 template <typename T>
@@ -64,46 +62,52 @@ bool LinkedList<T>::isItemAtEqual(int i, T element) {
             curr = curr->next;
         }
 
-        return element.equals(curr->data);
+        return curr->data == element;
+    }
+    else {
+        cout << "index not in bounds" << endl;
     }
     
-    cout << "index not in bounds";
     return false;
 }
 
 template <typename T>
 void LinkedList<T>::insertAt(int i, T element) {
-
-    if(inBounds(i)) {
-        if(i == 0) {
-            head = new Node(element);
-        }
-        else if(i == size){
+    if (inBounds(i)) {
+        if (i == 0) {
+            head = new Node<T>(element, head);
+            if (size == 0) {
+                tail = head;
+            }
+        } else if (i == size) {
             insertEnd(element);
-        }
-        else {
+        } else {
             Node<T>* curr = head;
-            for(int j = 0; j < i-1; j++) {
+            for (int j = 0; j < i - 1; j++) {
                 curr = curr->next;
             }
-            Node newNode = new Node(element, curr->next);
+            Node<T>* newNode = new Node<T>(element, curr->next);
             curr->next = newNode;
+            if (curr->next->next == nullptr) {
+                tail = curr->next;
+            }
         }
         size++;
+    } else {
+        cout << "Index not in bounds" << endl;
     }
-    cout << "index not in bounds";
 }
 
 template <typename T>
 void LinkedList<T>::insertEnd(T element) {
-    
-    Node<T>* curr = head;
-    while(curr->next != nullptr) {
-        curr = curr->next;
+    if(head == nullptr) {
+        insertAt(0, element);
     }
-    curr->next = new Node(element);
-    tail = curr->next;
-    size++;
+    else {
+        tail->next = new Node<T>(element);
+        tail = tail->next;
+        size++;
+    }
 
 }
 
@@ -118,7 +122,10 @@ void LinkedList<T>::removeAt(int i) {
         curr->next = curr->next->next;
         size--;
     }
-    cout << "index out of bounds";
+    else {
+        cout << "index out of bounds" << endl;
+    }
+    
 }
 
 template <typename T>
@@ -131,7 +138,9 @@ T LinkedList<T>::retreiveAt(int i) {
         }
         return curr->data;
     }
-    cout << "index out of bounds";
+    else {
+        cout << "index out of bounds" << endl;
+    }
 }
 
 template <typename T>
@@ -144,7 +153,10 @@ void LinkedList<T>::replaceAt(int i, T element) {
         }
         curr->data = element;
     }
-    cout << "index of out bounds";
+    else {
+        cout << "index of out bounds" << endl;
+    }
+    
 }
 
 template <typename T>
@@ -166,9 +178,8 @@ bool LinkedList<T>::inBounds(int i) {
 template <typename T>
 LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>& list) {
 
-    clearList()
+    clearList();
     size = list.listSize();
-
     Node<T>* curr = list.head;
     while(curr != nullptr) {
         insertEnd(curr->data);
@@ -177,4 +188,29 @@ LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>& list) {
 
     return *this;
 
+}
+
+template <typename T>
+void sortedLinkedList<T>::insert(T element) {
+    Node<T>* newNode = new Node<T>(element);
+
+    if (this->head == nullptr || element <= this->head->data) {
+        newNode->next = this->head;
+        this->head = newNode;
+        if (this->tail == nullptr) {
+            this->tail = this->head;
+        }
+        return;
+    }
+
+    Node<T>* curr = this->head;
+    while (curr->next != nullptr && curr->next->data < element) {
+        curr = curr->next;
+    }
+
+    newNode->next = curr->next;
+    curr->next = newNode;
+    if (newNode->next == nullptr) {
+        this->tail = newNode;
+    }
 }

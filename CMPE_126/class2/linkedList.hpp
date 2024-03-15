@@ -3,28 +3,29 @@ using namespace std;
 #pragma once
 
 template <typename T>
-class Node {
-
-    private:
-        T data;
-        Node<T>* next;
+class Node {   
 
     public:
+        T data;
+        Node<T>* next;
+        Node();
         Node(T);
-        Node(T, Node);
+        Node(T, Node<T>*);
+        ~Node();
 
 };
 
 template <typename T>
 class LinkedList {
 
-    private:
-        Node<T>* head, tail;
+    protected:
+        Node<T>* head;
+        Node<T>* tail;
         int size;
+        int capacity;
 
     public:
         LinkedList();
-        LinkedList(T[]);
         ~LinkedList();
         bool isEmpty() const;
         bool isFull() const;
