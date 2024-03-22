@@ -1,4 +1,5 @@
 #include <iostream>
+#include "../lab3/arrayList.hpp"
 using namespace std;
 #pragma once
 
@@ -41,6 +42,9 @@ class LinkedList {
         void clearList();
         bool inBounds(int);
         void extend(const ArrayList<T>*);
+        T min() const;
+        T max() const;
+        int count(const T&);
         LinkedList<T>& operator=(LinkedList<T>&);
 
 };
