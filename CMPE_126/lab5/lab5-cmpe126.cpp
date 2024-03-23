@@ -1,6 +1,7 @@
 #include <iostream>
-#include "arrayList.hpp"
-#include "linkedList.hpp"
+using namespace std;
+#include "arrayList.cpp"
+#include "linkedList.cpp"
 
 int main() {
 

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../lab3/arrayList.hpp"
+#include "arrayList.hpp"
 using namespace std;
 #pragma once
 

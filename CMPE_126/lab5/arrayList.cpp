@@ -78,7 +78,7 @@ bool ArrayList<e>::isItemAtEqual(int i, e num) {
 
 template<typename e>
 void ArrayList<e>::insertAt(int i, e num) {
-    if(i < 0 || i > numOfElements-1) {
+    if(i < 0 || i > numOfElements+1) {
         cout << "index is out of bounds" << endl;
     }
     else { 
@@ -113,7 +113,7 @@ void ArrayList<e>::removeAt(int i) {
 }
 
 template<typename e>
-e ArrayList<e>::retreiveAt(int i) {
+e ArrayList<e>::retrieveAt(int i) const {
     if(i < 0 || i > numOfElements-1) {
         cout << "index is out of bounds" << endl;
         return 0;
@@ -148,7 +148,7 @@ ArrayList<e>& ArrayList<e>::operator=(ArrayList<e>& arr) {
 
     array = new int[size];
     for(int i=0; i<arr.listSize(); i++) {
-        array[i] = arr.retreiveAt(i);
+        array[i] = arr.retrieveAt(i);
     }
 
     return *this;
@@ -157,7 +157,7 @@ ArrayList<e>& ArrayList<e>::operator=(ArrayList<e>& arr) {
 
 template<typename e>
 void ArrayList<e>::extend(const ArrayList<e>* arrayList) {
-    for (int i = 0; i < arrayList->size(); i++) {
+    for (int i = 0; i < arrayList->listSize(); i++) {
         this->insertEnd(arrayList->retrieveAt(i));
     }
 }
@@ -167,14 +167,14 @@ e ArrayList<e>::min() const {
 
     if(numOfElements == 0) {
         cout << "There are no elements in the array" << endl;
-        return;
+        return e();
     }
 
-    e min = this->retreiveAt(0);
+    e min = this->retrieveAt(0);
 
     for(int i=0; i<numOfElements; i++) {
-        if(this->retreiveAt(i) < min) {
-            min = this->retreiveAt(i);
+        if(this->retrieveAt(i) < min) {
+            min = this->retrieveAt(i);
         }
     }
     return min;
@@ -185,14 +185,14 @@ e ArrayList<e>::max() const {
 
     if(numOfElements == 0) {
         cout << "There are no elements in the array" << endl;
-        return;
+        return e();
     }
 
-    e max = this->retreiveAt(0);
+    e max = this->retrieveAt(0);
 
     for(int i=0; i<numOfElements; i++) {
-        if(this->retreiveAt(i) > max) {
-            max = this->retreiveAt(i);
+        if(this->retrieveAt(i) > max) {
+            max = this->retrieveAt(i);
         }
     }
     return max;
@@ -208,7 +208,7 @@ int ArrayList<e>::count(const e& element)  {
     int count = 0;
 
     for(int i=0; i<numOfElements; i++) {
-        if(this->retreiveAt(i) == element) {
+        if(this->retrieveAt(i) == element) {
             count++;
         }
     }

@@ -1,5 +1,4 @@
 #include "linkedList.hpp"
-#include "sortedLinkedList.hpp"
 #include <iostream>
 using namespace std;
 
@@ -190,34 +189,9 @@ LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>& list) {
 
 }
 
-template <typename T>
-void sortedLinkedList<T>::insert(T element) {
-    Node<T>* newNode = new Node<T>(element);
-
-    if (this->head == nullptr || element <= this->head->data) {
-        newNode->next = this->head;
-        this->head = newNode;
-        if (this->tail == nullptr) {
-            this->tail = this->head;
-        }
-        return;
-    }
-
-    Node<T>* curr = this->head;
-    while (curr->next != nullptr && curr->next->data < element) {
-        curr = curr->next;
-    }
-
-    newNode->next = curr->next;
-    curr->next = newNode;
-    if (newNode->next == nullptr) {
-        this->tail = newNode;
-    }
-}
-
 template<typename T>
 void LinkedList<T>::extend(const ArrayList<T>* arr) {
-    for (int i = 0; i < arr->size(); i++) {
+    for (int i = 0; i < arr->listSize(); i++) {
         this->insertEnd(arr->retrieveAt(i));
     }
 }

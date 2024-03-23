@@ -26,7 +26,7 @@ class ArrayList {
         void insertAt(int, e);
         void insertEnd(e); 
         void removeAt(int);
-        e retreiveAt(int);
+        e retrieveAt(int) const;
         void replaceAt(int, e);
         void clearList();
         void extend(const ArrayList<e>*);
