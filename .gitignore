@@ -1,4 +1,6 @@
 .vscode
-*.txt
+
 *.exe
 *.zip
+
+CMPE_126/**/*.txt

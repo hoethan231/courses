@@ -1,0 +1,122 @@
+Ethan Ho
+March 23rd, 2024
+Assembly Programming
+Dr. Bhaskar
+Homework 3
+
+2.4: MIPS to C
+
+$t0 = f * 4;
+$t0 = &A[4f];
+&t1 = g * 4;
+$t1 = &B[4g];
+f = A[4f];
+$t2 = &A[4f + 4];
+$t0 = A[4f + 4];
+$t0 = A[4f + 4] + f;
+B[4g] = A[4f + 4] + f;
+
+2.31: C to MIPS
+
+fib:
+    li $t0, 0
+    li $t1, 1
+    mov $t2, $a0
+    bne $t0, $t2, check2
+    mov $v0, $t2
+    jr $ra
+check2:
+    bne $t1, $t2, exit
+    mov $v0, $t1
+    jr $ra
+exit:
+    addi $a0, $t2, -1
+    jal fib
+    mov $t4, $v0
+    addi $a0, $t2, -2
+    jal fib
+    mov $t5, $v0
+    add $v0, $t4, $t5
+    jr $ra
+
+2.34: C to MIPS
+
+li $a0, a
+li $a1, b
+li $a2, c
+li $a3, d
+
+f:  addi $sp, $sp, -12    
+    sw $ra, 0($sp)    
+    sw $a2, 4($sp)    
+    sw $a3, 8($sp)
+    jal func
+    lw $t0, 4($sp)
+    lw $t1, 8($sp)
+    add $a1, $t0, $t1
+    jal func
+    lw $ra, 0($sp)
+    addi $sp, $sp, 12
+    jr $ra
+
+2.38 What is the value stored at the address pointed to by register $t2
+
+lbu $t0, 0($t1) //$t0 = 0x11
+sw $t0, 0($t2) // &$t2 = 0x1000 0010, 0($t2) = $t0 = 0x11
+
+0x11 is the value stored in $t2 at with the adress of 0x10000010
+
+2.39 MIPS Code
+
+.data
+num: .word 0x20014924
+
+.text
+main:
+    lw, $t1, num
+
+
+Computer Project: Convert ASCII to Int
+
+.data
+input: .asciiz "-123"
+
+.text
+main: 
+    la $a0, input //loads the address of the string
+    jal checkSign
+
+    move $a0, $v0
+    li $v0, 1
+    syscall //prints int result
+
+    li $v0, 10
+    syscall //exits program
+
+checkSign: 
+    lb $t0, 0($a0)
+    li $t1, $0          //bool value for the sign (default is positive)
+    bne $t0, "-", start
+    addi $t1, $t1, 1    //bool value for the sign (now negative)
+    addi $a0, $a0, 1    //next char
+start:
+    li $t3, 0           //sum = 0
+loop:
+    lb $t0, 0($a0)      //loads first char
+    beqz $t0, bad       //check for null char
+    blt $t0, "0", bad   //check for bad input
+    bgt $t0, "9", bad   //check for bad input
+    sub $t0, $t0, 48    //convert to ASCII
+    mul $t3, $t3, 10    //mul the sum by 10
+    add $t3, $t3, $t0   //add new char
+    addi $a0, 1         //next char
+    j loop
+exit:
+    beq $t1, 0, done
+    neg $t3, $t3
+done:
+    move $v0, $t3
+    jr $ra
+bad:
+    li $v0, -1
+    jr $ra
