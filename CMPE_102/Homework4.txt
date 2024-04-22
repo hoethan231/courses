@@ -1,0 +1,101 @@
+Ethan Ho
+April 21st, 2024
+Assembly Programming
+Dr. Bhaskar
+Homework 4
+
+Polynomial Function:
+
+.data
+input .asciiz "Enter a value for x: "
+
+.word
+main:
+    la $a0, input           //loads input as parameter
+    li $v0, 4
+    syscall                 //prints input
+    
+    li $v0, 5
+    syscall                 //reads int
+    move $a0, $v0           //moves the input into parameter for poly func
+
+    jal poly                //calls poly function
+    move $a0, $v0           //moves result to parameter for printing
+
+    li $v0, 1
+    syscall                 //prints result
+
+    li $v0, 10
+    syscall                 //exits program
+
+poly:
+    li $a1, 5               //sets the power to 5
+    jal pow                 //calls pow function
+    li $s0, 3
+    mul $t0, $v0, $s0       //3x^5
+    
+    li $a1, 4           
+    jal pow             
+    li $s0, 2
+    mul $t1, $v0, $s0       //2x^4
+    add $t0, $t0, $t1       //(3x^5) + (2x^4)
+
+    li $a1, 3
+    jal pow             
+    li $s0, 5
+    mul $t1, $v0, $s0       //5x^3
+    sub $t0, $t0, $t1       //(3x^5) + (2x^4) - (5x^3)
+
+    li $a1, 2
+    jal pow             
+    sub $t0, $t0, $v0       //(3x^5) + (2x^4) - (5x^3) - x^2
+
+    li $s0, 7
+    mul $t1, $s0, $a0       //7x
+    add $t0, $t0, $t1       //(3x^5) + (2x^4) - (5x^3) - x^2 + 7x
+
+    addi $t0, $t0, -6       //(3x^5) + (2x^4) - (5x^3) - (x^2) + 7x - 6
+
+    move $v0, $t0
+    jr $ra                  //return polynomial
+
+pow:
+    li $s1, 1               //sum = 1
+    li $s2, 1               //i = 1
+
+loop:
+    beq $s2, $a1, exit      //i == power
+    mul $s1, $s1, $a0       //sum *= x
+    addi $s2, $s2, 1        //i++
+
+exit:
+    move $v0, $s1
+    jr $ra                  //return sum
+
+
+(1) Disassembly:
+
+Address    Content from Hex to Deci
+0x00400024 0x3411000B -> 001101|00000|10001|0000000000001011|
+0x00400028 0x3C101001 -> 001111|00000|10000|0001000000000001|
+0x0040002c 0x2A21000B -> 001010|10001|00001|0000000000001011|
+0x00400030 0x14200007 -> 000101|00001|00000|0000000000000111|
+0x00400034 0xAE080004 -> 101011|11000|01000|0000000000000100|
+0x00400038 0x2231FFFF -> 001000|10001|10001|1111111111111111|
+0x0040003c 0x01129020 -> 000000|01000|10010|10010|00000100000| 
+0x00400040 0x2210FFFC => 001000|10000|10000|1111111111111100|
+0x00400044 0x2A210002 -> 001010|10001|00001|0000000000000010|
+0x00400048 0x1020FFFB -> 000100|00001|00000|1111111111111011|
+
+Translations
+Address    Content in MIPS
+0x00400024 ori $17, $0, 0x000B
+0x00400028 lui $16, 0x1001
+0x0040002c stli $1, $17, 0x000B
+0x00400030 bne $1, $0, 0x0007
+0x00400034 sw $8, 4($24)
+0x00400038 addi $17, $17, 0xFFFF
+0x0040003c 
+0x00400040
+0x00400044
+0x00400048
