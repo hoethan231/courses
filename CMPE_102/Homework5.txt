@@ -1,0 +1,142 @@
+Ethan Ho
+May 9th, 2024
+CMPE 102
+Dr. Bhaskar
+Homework 5
+
+1a:
+    data = 4KB = 2^12B
+    # of blocks = (data/size of blocks) = 2^12/4 = 2^10 blocks
+    # of index bits = log2(# of blocks) = 10 bits
+    # of offset bits = log2(size of blocks) = log2(2^2) = 2 bits
+    # of tag bits = 32 - index - offset = 32 - 10 - 2 = 20 bits
+
+1b:
+    Total bits = (tag + index + offset) * # of blocks = (20 + 10 + 2)*(2^10) = 32KB
+
+1c:
+    tag | index | offset
+
+    0x48014554
+    01001000000000010100|0101010101|00
+    miss
+
+    0x48014548
+    01001000000000010100|0101010010|00
+    miss
+
+    0x48014754
+    01001000000000010100|0111010101|00
+    miss
+
+    0x48034760
+    01001000000000110100|0111011000|00
+    miss
+
+    0x48014554
+    01001000000000010100|0101010101|00
+    hit
+
+    0x48014560
+    01001000000000010100|0101011000|00
+    miss
+
+    0x48014760
+    01001000000000010100|0111011000|00
+    hit
+
+    0x48014554
+    01001000000000010100|0101010101|00
+    hit
+
+    missrate = (5/8)*100 = 62.5%
+
+2a:
+    data = 32KB = 2^15B
+    size of blocks = 32B = 2^5
+    # of blocks = (data/size of blocks) = 2^15/2^5 = 2^10
+    # of index bits = log2(# of blocks) = log2(2^10) = 10bits
+    # of offset bits = log2(size of blocks) = log2(2^5) = 5bits
+    # tag bits = 32 - index - offset = 32 - 10 - 5 = 17bits
+
+2b:
+    total bits = (index + tag + offset) * (# of blocks) = (10 + 15 + 17)*(2^10) = 32KB
+
+2c:
+    tag | index | offset
+
+    0x48014554
+    01001000000000010|1000101010|10100
+    miss
+
+    0x48014548
+    01001000000000010|1000101010|01000
+    hit
+
+    0x48014754
+    01001000000000010|1000111010|10100
+    miss
+
+    0x48034760
+    01001000000000110|1000111011|00000
+    miss
+
+    0x48014554
+    01001000000000010|1000101010|10100
+    hit
+
+    0x48014560
+    01001000000000010|1000101011|00000
+    miss
+
+    0x48014760
+    01001000000000010|1000111011|00000
+    hit
+
+    0x48014554
+    01001000000000010|1000101010|10100
+    hit
+
+    missrate = (4/8)*100 = 50.0%
+
+3a:
+    data = 128KB = 2^17B
+    # of sets = data/(bytes per block * # of ways) = 2^17/(2^4*2^2) = 2^11 sets
+    # index bits = log2(# of sets) = 11 bits
+    # of offset bits = log2(size of block) = 4 bits
+    # of tag bits = 32 - 11 - 6 = 15 bits
+    
+3b: 
+    Total # of bits = (index + tag + offset)*sets = (32)*2^11 = 64KB
+
+4:
+    #1 Cycles: (# of hits * hit cycle) + (# of misses * miss penalty) = (3 * 1) + (5 * 20) = 103 cycles
+    #2 Cycles: (# of hits * hit cycle) + (# of misses * miss penalty) = (4 * 1) + (4 * 40) = 164 cycles
+
+    Problem 1 was faster
+
+5:
+    i: interrupt
+    ii: exception
+    iii: exception
+    iv: exception
+    v: interrupt
+
+6:
+    i: When an exception occurs, the flow of the program is paused and transfered to the exception handler.
+        There it saves the relavant information into the core and then prints out an error message and continues the program.
+
+    ii: The two additional registers that we need in MIPS to implement the exception system would be the exception program counter and cause register.
+
+7:
+    (340)base10 = 0x0154 = 000101010100
+    (128)base10 = 0x0080 = 000010000000
+
+    Offest = target - (curret + 4) = 128 - 344 = -216 bytes or -54 words
+    bgtz $9, check_val = 000111 01001 1111111111101010
+
+
+8:
+    transfer time = (transfer rate/sector size) = (24.5/(0.0005)) = 20 ms
+    avg latency = (0.5 / retational speed) = (0.5/(7200/60)) = 4.16 ms
+    disk access time = seek time + rotational latency + transfer time + controller time = 5.7 + 4.16 + 20 + 1 = 30.86ms
