@@ -2,5 +2,6 @@
 
 *.exe
 *.zip
+*.pdf
 
 CMPE_126/**/*.txt
