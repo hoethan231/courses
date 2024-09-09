@@ -7,40 +7,17 @@
 int main() {
 
     Roster r = Roster();
-
-    std::ifstream classList("roster.txt");
-    std::string line;
-
-    while(getline(classList, line)) {
-        std::stringstream ss(line);
-        std::string field;
-
-        getline(ss, field, ',');
-        int studentId = stoi(field);
-
-        getline(ss, field, ',');
-        std::string firstName = field;
-
-        getline(ss, field, ',');
-        std::string lastName = field;
-
-        getline(ss, field, ',');
-        std::string academicLevel = field;
-
-        Student student(studentId, firstName, lastName, academicLevel);
-        r.insert(student);
-    }
-    classList.close();
     
     r.printAll();
 
     Student student1(3333, "linear", "francisco", "senior");
-    r.remove(student1);
+    r.insert(student1);
     r.printAll();
+    r.remove(student1);
 
-    Student student2(1212, "ho", "ethan", "sophmore");
+    Student student2(1212, "ho", "ethan", "sophomore");
     r.insert(student2);
-    r.update(student2, 1313, "so", "athan", "sophmore");
+    r.update(student2, 1313, "so", "athan", "sophomore");
     r.printAll();
 
     return 0;
