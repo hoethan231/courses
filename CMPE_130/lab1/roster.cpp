@@ -52,7 +52,7 @@ void Roster::insert(Student student) {
     int newStudentAscii = (int)(student.getFirst()[0,1]);
     int currStudentAscii = (int)(this->array[i-1].getFirst()[0,1]);
 
-    while( currStudentAscii >= newStudentAscii ) {
+    while( i > 0 && currStudentAscii >= newStudentAscii ) {
         this->array[i] = this->array[i-1];
         i--;
     }
