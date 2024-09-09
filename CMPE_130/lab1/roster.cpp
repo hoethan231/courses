@@ -127,11 +127,80 @@ void Roster::printAll() {
 }
 
 void Roster::clear() {
+
     if (array != nullptr) {
         delete[] this->array;
     }
     this->size = 0;
     this->array = new Student[this->capacity];
+
 }
 
+void Roster::insertionSort() {
 
+    for(int i=1; i<(this->size)-1; i++) {
+        int j = i;
+        int currASCII = (int)(this->array[j].getFirst()[0,1]);
+        int prevASCII = (int)(this->array[j-1].getFirst()[0,1]);
+        while(j>0 && currASCII < prevASCII) {
+            Student temp = this->array[j];
+            this->array[j] = this->array[j-1];
+            this->array[j-1] = temp;
+            j--;
+        }
+    }
+
+}
+
+void Roster::selectionSort() {
+    
+    for(int i=0; i<this->size-1; i++) {
+        int minASCII = (int)(this->array[i].getFirst()[0,1]);
+        int minASCIIIndex = i;
+        int currASCII = minASCII;
+
+        for(int j=i+1; j<this->size; j++) {
+            if(currASCII < minASCII) {
+                minASCII = currASCII;
+                minASCIIIndex = i;
+            }
+        }
+
+        Student temp = this->array[i];
+        this->array[i] = this->array[minASCIIIndex];
+        this->array[minASCIIIndex] = temp;
+    }
+
+}
+
+int Roster::partition(int left, int right) {
+
+    int pivot = (int)(this->array[right].getFirst()[0,1]);
+    int i = left - 1;
+
+    for (int j=left; j <= right-1; j++) {
+        int curr = (int)(this->array[j].getFirst()[0,1]);
+        if ( curr < pivot ) {
+            i++;
+            Student temp = this->array[i];
+            this->array[i] = this->array[j];
+            this->array[j] = temp;
+        }
+    }
+
+    Student temp = this->array[i+1];
+    this->array[i+1] = this->array[right];
+    this->array[right] = temp;
+    return i + 1;
+
+}
+
+void Roster::quickSort(int left, int right) {
+
+    if (left < right) {
+        int parIdx = partition(left, right);
+        quickSort(left, parIdx - 1);
+        quickSort(parIdx + 1, left);
+    }
+
+}

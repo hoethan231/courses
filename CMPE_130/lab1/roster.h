@@ -24,6 +24,10 @@ class Roster {
         void update(Student, int, std::string, std::string, std::string);
         void printAll();
         void clear();
+        void insertionSort();
+        void selectionSort();
+        int partition(int, int);
+        void quickSort(int, int);
 
 };
 

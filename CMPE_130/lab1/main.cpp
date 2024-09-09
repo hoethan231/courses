@@ -20,6 +20,13 @@ int main() {
     r.update(student2, 1313, "so", "athan", "sophomore");
     r.printAll();
 
+    Student student3(1212, "pin", "frank", "senior");
+    Student student4(1212, "dang", "phuc", "freshman");
+    Student student5(1212, "kim", "quin", "senior");
+    r.insert(student3);
+    r.insert(student4);
+    r.insert(student5);
+    
     return 0;
 
 };
