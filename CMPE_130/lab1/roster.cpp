@@ -104,7 +104,7 @@ void Roster::update(Student student, int id, std::string first, std::string last
             this->array[mid].setFirst(first);
             this->array[mid].setLast(last);
             this->array[mid].setGrade(grade);
-            break;
+            return;
         }
     }
 
@@ -114,9 +114,15 @@ void Roster::update(Student student, int id, std::string first, std::string last
 
 void Roster::printAll() {
 
+    if( isEmpty() ) { 
+        std::cout << "The roster is empty" << std::endl;
+        return;
+    }
+
     for(int i = 0; i < this->size; i++) {
         std::cout << this->array[i] << ", ";
     }
+    std::cout << std::endl;
 
 }
 
