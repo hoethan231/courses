@@ -204,3 +204,40 @@ void Roster::quickSort(int left, int right) {
     }
 
 }
+
+void Roster::heapify(int size, int i) {
+
+    int largest = i;
+    int leftChild = 2*i + 1;
+    int rightChild = 2*i + 2;
+
+    //heap sort by grade
+    if(leftChild < size && this->array[leftChild].getGrade() > this->array[i].getGrade()) {
+        largest = leftChild;
+    }
+
+    if(rightChild < size && this->array[rightChild].getGrade() > this->array[i].getGrade()) {
+        largest = rightChild;
+    }
+
+    if(largest != i) {
+        Student temp = this->array[i];
+        this->array[i] = this->array[largest];
+        this->array[largest] = temp;
+        heapify(size, largest);
+    }
+}
+
+void Roster::heapSort(int size) {
+
+    for(int i=size/2 - 1; i >=0; i--) {
+        heapify(size, i);
+    }
+
+    for(int i=size-1; i > 0; i--) {
+        Student temp = this->array[0];
+        this->array[0] = this->array[i];
+        this->array[i] = temp;
+        heapify(i, 0);
+    }
+}

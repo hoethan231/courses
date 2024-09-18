@@ -28,6 +28,8 @@ class Roster {
         void selectionSort();
         int partition(int, int);
         void quickSort(int, int);
+        void heapify(int, int);
+        void heapSort(int);
 
 };
 
