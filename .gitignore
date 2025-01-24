@@ -1,7 +1,7 @@
-.vscode
+*.vscode
 
 *.exe
 *.zip
-*.pdf
+*.venv
 
 CMPE_126/**/*.txt
