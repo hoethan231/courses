@@ -5,3 +5,4 @@
 *.venv
 
 CMPE_126/**/*.txt
+CMPE_188/data/
