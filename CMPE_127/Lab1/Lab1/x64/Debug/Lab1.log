@@ -1,0 +1,15 @@
+﻿  Assembling lab1.asm...
+lab1.asm(1): error A2034: must be in segment block
+lab1.asm(2): error A2034: must be in segment block
+lab1.asm(3): error A2034: must be in segment block
+lab1.asm(5): error A2008: syntax error : .
+lab1.asm(6): error A2034: must be in segment block : main
+lab1.asm(7): error A2034: must be in segment block
+lab1.asm(8): error A2034: must be in segment block
+lab1.asm(9): error A2034: must be in segment block
+lab1.asm(11): error A2034: must be in segment block
+lab1.asm(12): error A2034: must be in segment block
+lab1.asm(13): error A2034: must be in segment block
+lab1.asm(15): error A2008: syntax error : invoke
+lab1.asm(17): fatal error A1010: unmatched block nesting : main
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"Lab1\x64\Debug\lab1.obj" /W3 /errorReport:prompt  /Talab1.asm" exited with code 1.
