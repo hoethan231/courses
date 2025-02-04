@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "xorgateSim_behav" "xil_defaultlib.xorgateSim" "xil_defaultlib.glbl" -log "elaborate.log" 
