@@ -1,0 +1,16 @@
+Ethan Ho
+2/4/25
+CMPE_152, Sec 01
+Professor Bhaskar
+Homework 1
+
+1)
+	a) An assember converts assembly code to machine code
+	b) A compiler is a program that translates a program from one language to another
+	c) An intepreter is a program that reads a source program and produces the results of executing that program
+	
+	The main differences between a compiler and an intepreter would have to be the compiler only translate a program to another language while an intepreter directly executes the operations in the source program. Because of this compilers are usually faster than inepreters at mapping inputs to outputs however intepreters can find errors better. 
+
+2)
+
+	
