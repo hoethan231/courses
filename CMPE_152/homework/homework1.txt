@@ -12,5 +12,24 @@ Homework 1
 	The main differences between a compiler and an intepreter would have to be the compiler only translate a program to another language while an intepreter directly executes the operations in the source program. Because of this compilers are usually faster than inepreters at mapping inputs to outputs however intepreters can find errors better. 
 
 2)
+	a) {x | x ∈ {1, 10, 100}}
+	b) w is the set of all possible conbinations of 0s and 1s that are palindromes
+	c) 
+		i)  {w | w is a string over Σ with even length}
+		ii) {w | w starts with zero or more 1s, with zero or more occurances of a 0, with a one or more occurance of 1s}
+	
+3)
+	a) (a|b)*ab
+		L1 sample: { ab, aaaab, ababab, baab }
 
+	b) (a|b)*aba(a|b)*
+		L2 sample: { aba, aaabaaa, babaababb, baba }
+
+	c) (a|b)* - (a|b)*aba
+		L3 sample: { abaaa, bbbb, aaa, abbba }
+
+	d) aa(a|b)*bb
+		L4 sample: { aabb, aabbababb, aababb, aaabbb}
+
+4)
 	
