@@ -26,6 +26,6 @@ module fulladder(
     );
     
     assign S = A ^ B ^ Cin;
-    assign Cout = ((A ^ B & Cin) || A || B);
+    assign Cout = (A & B || A & Cin || B & Cin);
     
 endmodule
