@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/Hw2/minority/minority.srcs/sources_1/new/minority.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module minority
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/Hw2/minority/minority.srcs/sim_1/new/minorityTB.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module minorityTB
