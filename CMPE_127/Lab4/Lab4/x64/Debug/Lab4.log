@@ -1,0 +1,30 @@
+﻿  Assembling Lab4.asm...
+Lab4.asm(3): error A2008: syntax error : .
+Lab4.asm(4): error A2008: syntax error : .
+Lab4.asm(5): error A2008: syntax error : ,
+Lab4.asm(31): error A2070: invalid instruction operands
+Lab4.asm(32): error A2070: invalid instruction operands
+Lab4.asm(34): error A2070: invalid instruction operands
+Lab4.asm(35): error A2070: invalid instruction operands
+Lab4.asm(47): error A2070: invalid instruction operands
+Lab4.asm(50): error A2070: invalid instruction operands
+Lab4.asm(59): error A2070: invalid instruction operands
+Lab4.asm(60): error A2070: invalid instruction operands
+Lab4.asm(62): error A2070: invalid instruction operands
+Lab4.asm(63): error A2070: invalid instruction operands
+Lab4.asm(65): error A2070: invalid instruction operands
+Lab4.asm(66): error A2070: invalid instruction operands
+Lab4.asm(68): error A2070: invalid instruction operands
+Lab4.asm(69): error A2070: invalid instruction operands
+Lab4.asm(72): error A2008: syntax error : main
+Lab4.asm(72): error A2088: END directive required at end of file
+Lab4.asm(37): error A2022: instruction operands must be the same size
+Lab4.asm(39): error A2022: instruction operands must be the same size
+Lab4.asm(41): error A2022: instruction operands must be the same size
+Lab4.asm(43): error A2022: instruction operands must be the same size
+Lab4.asm(45): error A2022: instruction operands must be the same size
+Lab4.asm(53): error A2006: undefined symbol : a_and_mask
+Lab4.asm(54): error A2006: undefined symbol : a_and_mask
+Lab4.asm(56): error A2006: undefined symbol : b_or_mask
+Lab4.asm(57): error A2006: undefined symbol : b_or_mask
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"Lab4\x64\Debug\Lab4.obj" /W3 /errorReport:prompt  /TaLab4.asm" exited with code 1.
