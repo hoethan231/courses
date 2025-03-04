@@ -31,15 +31,16 @@ wire co;
 wire pg;
 wire gg;
 
-    CLA4 I(.a(a), .b(b), .ci(ci), .s(s), .co(co), .pg(pg), .gg(gg));
+    CLA4 uut(.a(a), .b(b), .ci(ci), .s(s), .co(co), .pg(pg), .gg(gg));
+    integer i, j, k;
     initial begin
-        
-        a = 4'b0001; b = 4'b0001; ci = 1'b0; #5
-        a = 4'b0011; b = 4'b0001; ci = 1'b0; #5
-        a = 4'b0001; b = 4'b0001; ci = 1'b1; #5
-        a = 4'b1001; b = 4'b0011; ci = 1'b1; #5
-        a = 4'b1111; b = 4'b0000; ci = 1'b1; #5 //Overflow
-        $finish;
+        for(i=0; i<16; i=i+1) begin
+            for(j=0;j<16;j=j+1) begin
+                for(k=0;k<2;k=k+1) begin
+                    a = i; b = j; ci = k; #10;
+                end
+            end
+        end
+        $finish();
     end
-
 endmodule
