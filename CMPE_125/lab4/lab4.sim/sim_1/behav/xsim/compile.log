@@ -1,8 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/lab4/lab4.srcs/sources_1/new/CLA4.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module CLA4
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/lab4/lab4.srcs/sources_1/new/CLALogic.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module CLALogic
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/lab4/lab4.srcs/sources_1/new/GPFullAdder.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module GPFullAdder
-INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/lab4/lab4.srcs/sim_1/new/CLA4TB.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module CLA4TB
