@@ -4,7 +4,12 @@ RUN apt-get update && apt-get install -y \
 	build-essential \
 	gcc \
 	git \
-	&& rm -rf /var/lib/apt/lists/*
+	kmod \
+	procps \
+	strace \
+    	linux-headers-generic \
+    	dkms \
+    	&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
