@@ -35,7 +35,7 @@ module test_vector_tb();
     CLA4 dut(.a(a), .b(b), .ci(ci), .s(s), .co(co), .pg(pg), .gg(gg));
     
     always begin
-        clk = 1; #5; clk = 0; #5;
+        clk = 1; #27; clk = 0; #5;
     end
     
     initial begin

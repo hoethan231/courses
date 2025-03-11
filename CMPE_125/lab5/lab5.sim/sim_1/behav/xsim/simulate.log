@@ -1,3 +1,7 @@
 Time resolution is 1 ps
-         4 tests completed with          0 errors
-$finish called at time : 35 ns : File "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/lab5/lab5.srcs/sim_1/new/test_vector_tb.v" Line 68
+Error at vector          4:
+  Inputs: a=0011, b=1100, ci=0
+  Expected: s=1111, co=1, pg=1, gg=0
+  Got: s=1111, co=0, pg=1, gg=0
+         5 tests completed with          1 errors
+$finish called at time : 155 ns : File "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/lab5/lab5.srcs/sim_1/new/test_vector_tb.v" Line 68
