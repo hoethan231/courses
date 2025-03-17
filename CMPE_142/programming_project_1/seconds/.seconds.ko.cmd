@@ -1,0 +1,1 @@
+savedcmd_/home/ethan/programming_project_1/seconds/seconds.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/ethan/programming_project_1/seconds/seconds.ko /home/ethan/programming_project_1/seconds/seconds.o /home/ethan/programming_project_1/seconds/seconds.mod.o

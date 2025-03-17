@@ -1,0 +1,1 @@
+savedcmd_/home/ethan/programming_project_1/simple/simple.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/ethan/programming_project_1/simple/simple.ko /home/ethan/programming_project_1/simple/simple.o /home/ethan/programming_project_1/simple/simple.mod.o
