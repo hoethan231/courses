@@ -1,0 +1,11 @@
+﻿  Assembling arrays.asm...
+arrays.asm(3): error A2008: syntax error : .
+arrays.asm(4): error A2008: syntax error : .
+arrays.asm(5): error A2008: syntax error : ,
+arrays.asm(9): error A2008: syntax error : DUP
+arrays.asm(23): error A2008: syntax error : Invoke
+arrays.asm(25): error A2008: syntax error : mainp
+arrays.asm(26): error A2008: syntax error : main
+arrays.asm(26): error A2088: END directive required at end of file
+arrays.asm(26): fatal error A1010: unmatched block nesting : main
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"Lab7\x64\Debug\arrays.obj" /W3 /errorReport:prompt  /Taarrays.asm" exited with code 1.
