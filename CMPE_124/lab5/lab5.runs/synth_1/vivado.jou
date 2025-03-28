@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Fri Nov  1 15:44:36 2024
+# Process ID: 3992
+# Current directory: C:/Users/Admin/OneDrive/Desktop/Vivado/lab5/lab5.runs/synth_1
+# Command line: vivado.exe -log sr_latch.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source sr_latch.tcl
+# Log file: C:/Users/Admin/OneDrive/Desktop/Vivado/lab5/lab5.runs/synth_1/sr_latch.vds
+# Journal file: C:/Users/Admin/OneDrive/Desktop/Vivado/lab5/lab5.runs/synth_1\vivado.jou
+# Running On        :DESKTOP-LSFAPKG
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz
+# CPU Frequency     :2112 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :17092 MB
+# Swap memory       :6174 MB
+# Total Virtual     :23266 MB
+# Available Virtual :9970 MB
+#-----------------------------------------------------------
+source sr_latch.tcl -notrace
