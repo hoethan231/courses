@@ -128,9 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <MASM Include="arrays.asm" />
     <MASM Include="sum.asm" />
-    <MASM Include="factorial.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
