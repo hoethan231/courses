@@ -18,7 +18,7 @@ even_odd_program proc
 
 loopp:
 	MOV AX, [arr + ESI]				; eax = arr[i]
-	AND [arr + ESI], 1b				; check the last bit whether its 1 or 0
+	TEST [arr + ESI], 1b			; check the last bit whether its 1 or 0
 	JZ even_num						; jump if even
 
 	odd_num:
