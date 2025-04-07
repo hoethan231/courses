@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Wed Oct  2 10:41:24 2024
+# Process ID: 7100
+# Current directory: C:/Users/Admin/OneDrive/Desktop/Vivado/project_1/project_1.runs/synth_1
+# Command line: vivado.exe -log something.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source something.tcl
+# Log file: C:/Users/Admin/OneDrive/Desktop/Vivado/project_1/project_1.runs/synth_1/something.vds
+# Journal file: C:/Users/Admin/OneDrive/Desktop/Vivado/project_1/project_1.runs/synth_1\vivado.jou
+# Running On        :DESKTOP-LSFAPKG
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz
+# CPU Frequency     :2112 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :17092 MB
+# Swap memory       :5100 MB
+# Total Virtual     :22193 MB
+# Available Virtual :6950 MB
+#-----------------------------------------------------------
+source something.tcl -notrace
