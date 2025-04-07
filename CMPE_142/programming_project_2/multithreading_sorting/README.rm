@@ -1,0 +1,46 @@
+# Multithreaded Sorting Program
+
+## Project Description
+
+This project implements a multithreaded sorting application that efficiently sorts an array of integers using three separate threads:
+
+1. **Two Sorting Threads**: The program divides the input array into two equal halves, with each sorting thread responsible for sorting one half using the quicksort algorithm.
+
+2. **One Merging Thread**: After both sorting threads complete their work, a merging thread combines the two sorted sublists into a single, fully sorted array.
+
+### Implementation Details
+
+- **Thread Creation**: The program uses the POSIX threads (pthreads) library to create and manage threads.
+- **Data Sharing**: Two global arrays are used to share data between threads - the original array for sorting and a second array for the final merged result.
+- **Synchronization**: Thread joining ensures proper synchronization between the sorting and merging phases.
+- **Sorting Algorithm**: Each sorting thread implements the quicksort algorithm, which offers O(n log n) average time complexity.
+- **Parameter Passing**: The (`SortParams`) structure is used to pass parameters (starting and ending indices) to the sorting threads.
+
+## Compilation Instructions
+
+To compile the program, use the following command:
+
+```bash
+gcc -o multithreaded_sort multithreaded_sort.c -pthread
+```
+
+The `-pthread` flag is required to link the pthread library.
+
+## Execution Instructions
+
+### Basic Usage
+
+```bash
+./multithreaded_sort <array_size> [elements...]
+```
+
+### Parameters
+
+- `array_size`: Size of array
+- `elements`: Array elements
+
+### Example
+
+```bash
+./multithreaded_sort 8 64 34 25 12 22 11 90 5
+```

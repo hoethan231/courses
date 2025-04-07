@@ -1,0 +1,17 @@
+# Linux Shell Project
+
+### Description of Project
+
+This is a simple shell implementation in C, which allows users to execute commands, redirect input/output, and use pipes to connect multiple commands. The shell also keeps a history of previously entered commands and allows users to exit the shell by typing "exit".
+
+### Instructions
+
+To compile the shell, use the following command:
+```
+gcc -o myshell shell.c
+```
+To run the shell, use the following command:
+```
+./myshell
+```
+The shell will prompt the user to enter commands. To exit the shell, type "exit" and press Enter.
