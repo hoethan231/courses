@@ -88,7 +88,7 @@ module vendingmachine(
                     out = 4'b1010;
                     end
                 else begin
-                    next = S10;
+                    next = S0;
                     out = 4'b0010;
                     end
             S15:
