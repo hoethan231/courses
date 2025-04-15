@@ -34,13 +34,8 @@ module vendingmachine(
     parameter S20 = 3'b100;
     parameter S25 = 3'b101;
     
-    always @ (posedge clk, posedge reset) begin
-        if (reset) begin
-            curr <= S0;
-            end
-        else begin
+    always @ (posedge clk) begin
             curr <= next;
-            end
     end
         
     always @ (*) begin
@@ -76,8 +71,8 @@ module vendingmachine(
                     out = 4'b1100;
                     end
                 else begin
-                    next = S5;
-                    out = 4'b0000;
+                    next = S0;
+                    out = 4'b0100;
                     end
             S10:
                 if (N) begin
@@ -94,7 +89,7 @@ module vendingmachine(
                     end
                 else begin
                     next = S10;
-                    out = 4'b0000;
+                    out = 4'b0010;
                     end
             S15:
                 if (N) begin
@@ -110,8 +105,8 @@ module vendingmachine(
                     out = 4'b1110;
                     end
                 else begin
-                    next = S15;
-                    out = 4'b0000;
+                    next = S0;
+                    out = 4'b0110;
                     end
             S20:
                 if (N) begin
@@ -126,9 +121,9 @@ module vendingmachine(
                     next = S0;
                     out = 4'b1001;
                     end
-               else begin
-                    next = S20;
-                    out = 4'b0000;
+                else begin
+                    next = S0;
+                    out = 4'b0001;
                     end
              default: begin
                  next = S0;

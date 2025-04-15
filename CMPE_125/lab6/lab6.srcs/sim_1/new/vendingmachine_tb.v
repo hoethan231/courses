@@ -49,7 +49,7 @@ module vendingmachine_tb();
     reset = 0;
     N = 0; D = 0; Q = 0;
 
-    #10;
+    #15;
     while (!$feof(fd)) begin
         status = $fscanf(fd, "%b\n", line_bits);
         if (status == 1) begin
