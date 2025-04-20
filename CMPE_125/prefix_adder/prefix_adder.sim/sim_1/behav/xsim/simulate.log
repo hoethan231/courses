@@ -1,0 +1,9 @@
+Time resolution is 1 ps
+Time 20000: PASS (s = 0000000000000010)
+Time 30000: PASS (s = 0000000000000000)
+Time 40000: PASS (s = 1111111111111110)
+Time 50000: PASS (s = 1000000000000000)
+Time 60000: PASS (s = 0001000000000000)
+Time 70000: PASS (s = 0000000000001111)
+simulation done
+$finish called at time : 70 ns : File "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sim_1/new/prefixAdder_tb.v" Line 73

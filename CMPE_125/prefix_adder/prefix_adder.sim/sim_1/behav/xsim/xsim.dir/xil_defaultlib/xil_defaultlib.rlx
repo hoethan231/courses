@@ -1,0 +1,10 @@
+0.7
+2020.2
+May 22 2024
+19:03:11
+C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.sim/sim_1/behav/xsim/glbl.v,1708598507,verilog,,,,glbl,,,,,,,,
+C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sim_1/new/prefixAdder_tb.v,1745110573,verilog,,,,prefixAdder_tb,,,,,,,,
+C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sources_1/new/blackbox.v,1745111340,verilog,,C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sources_1/new/prefixAdder.v,,blackbox,,,,,,,,
+C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sources_1/new/prefixAdder.v,1745111273,verilog,,C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sources_1/new/prop_gen.v,,prefixAdder,,,,,,,,
+C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sources_1/new/prop_gen.v,1745111247,verilog,,C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sources_1/new/sumblock.v,,prop_gen,,,,,,,,
+C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sources_1/new/sumblock.v,1745104751,verilog,,C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/prefix_adder/prefix_adder.srcs/sim_1/new/prefixAdder_tb.v,,sumblock,,,,,,,,
