@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../prefix_adder.srcs/sources_1/new/blackbox.v" \
+"../../../../prefix_adder.srcs/sources_1/new/prefixAdder.v" \
+"../../../../prefix_adder.srcs/sources_1/new/prop_gen.v" \
+"../../../../prefix_adder.srcs/sources_1/new/sumblock.v" \
+"../../../../prefix_adder.srcs/sim_1/new/prefixAdder_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

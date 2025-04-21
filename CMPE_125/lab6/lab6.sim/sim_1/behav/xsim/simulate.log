@@ -1,0 +1,18 @@
+Time resolution is 1 ps
+Time 15000: PASS (out = 0000)
+Time 25000: PASS (out = 0000)
+Time 35000: PASS (out = 0000)
+Time 45000: PASS (out = 0000)
+Time 55000: PASS (out = 1000)
+Time 65000: PASS (out = 0000)
+Time 75000: PASS (out = 1100)
+Time 85000: PASS (out = 0000)
+Time 95000: PASS (out = 0000)
+Time 105000: PASS (out = 0110)
+Time 115000: PASS (out = 1000)
+Time 125000: PASS (out = 0000)
+Time 135000: PASS (out = 0000)
+Time 145000: PASS (out = 0000)
+Time 155000: PASS (out = 1001)
+simulation done
+$finish called at time : 155 ns : File "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/lab6/lab6.srcs/sim_1/new/vendingmachine_tb.v" Line 77
