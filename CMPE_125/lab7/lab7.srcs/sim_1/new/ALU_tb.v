@@ -25,26 +25,34 @@ module ALU_tb();
     reg [31:0] a, b;
     reg [2:0] F;
     wire [31:0] c;
-    wire ZR, OV;
+    wire ZR, OV, CF;
 
-    ALU dut(.a(a), .b(b), .F(F), .c(c), .OV(OV), .ZR(ZR));
+    integer fd;
+    integer status;
+    reg [66:0] line_bits;
+
+    ALU dut(.a(a), .b(b), .F(F), .c(c), .OV(OV), .ZR(ZR), .CF(CF));
     
     initial begin
-        
-        // Test all basic functionality of ALU
-        a = 32'b0000_0000_0000_0000_0000_0000_0000_1001; b = 32'b0000_0000_0000_0000_0000_0000_0000_0110;
-        F = 3'b000; #5; // AND
-        F = 3'b001; #5; // OR
-        F = 3'b010; #5; // ADD
-        F = 3'b100; #5;
-        F = 3'b101; #5;
-        F = 3'b110; #5; // SUB
-        F = 3'b111; #5;
-        
-        // Endcases
-        F = 3'b011; #5; // Not used
-        a = 32'b0100_0000_0000_0000_0000_0000_0000_0000; b = 32'b0100_0000_0000_0000_0000_0000_0000_0000;
-        F = 3'b010; #5; // Overflow
-        $finish();
+        fd = $fopen("C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/lab7/lab7.srcs/sim_1/new/testvector.tv", "r");
+        if (fd == 0) begin
+            $display("Error: could not open file");
+            $finish;
         end
+
+        a = 32'b0; b = 32'b0; F = 3'b0; #5;
+    
+        while (!$feof(fd)) begin
+            status = $fscanf(fd, "%b\n", line_bits);
+            if (status == 1) begin
+                a = line_bits[66:35];
+                b = line_bits[34:3];
+                F = line_bits[2:0];
+                #10;
+            end
+        end
+      $fclose(fd);
+      $display("simulation done");
+      $finish;
+    end
 endmodule
