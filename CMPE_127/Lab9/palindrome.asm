@@ -1,4 +1,4 @@
-; Lab 9 Palindrome	
+; Lab 9 Working with Stacks and Strings	
 ; Check whether a string is a palindrome or not
 
 .386
@@ -7,13 +7,13 @@ ExitProcess proto,dwExitCode:dword
 include Irvine32.inc
 
 .data
-	mymsg		byte	"level", 0
+	mymsg		byte	"hello", 0
 	reversemsg	byte lengthof mymsg DUP (0)
 	isPal		byte    "The string is a palindrome.",0
     notPal	    byte    "The string is NOT a palindrome.",0
 
 .code
-main proc
+palin proc
 	; Push original message into stack
 	mov edx, offset mymsg
 	call WriteString
@@ -65,5 +65,5 @@ compare_loop:
 	done:
 		Invoke ExitProcess, 0
 
-main endp
-end main
+palin endp
+end palin
