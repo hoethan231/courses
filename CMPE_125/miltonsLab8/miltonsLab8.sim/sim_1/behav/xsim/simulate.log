@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+[FAIL] 16000 - exp: 06981cf8  got: xxxxxxxx
+All vectors processed - simulation finished
+$stop called at time : 16 ns : File "C:/Users/Admin/OneDrive/Desktop/Vs/School/CMPE_125/miltonsLab8/miltonsLab8.srcs/sim_1/new/singlesim.v" Line 100
