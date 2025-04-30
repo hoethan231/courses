@@ -7,3 +7,5 @@
 CMPE_126/**/*.txt
 CMPE_188/data/
 .vs/
+
+**/__pycache__/
