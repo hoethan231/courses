@@ -29,6 +29,7 @@ module factorial_program(
     
     wire load_reg, load_cnt, SEL, OE, EN, Error, GT;
     
-    datapath    DP(clk, )
+    datapath        DP(clk, load_reg, load_cnt, SEL, OE, EN, n, Error, GT, Q);
+    control_unit    CU(clk, go, Error, GT, SEL, load_reg, load_cnt, OE, EN, done, error);
     
 endmodule
