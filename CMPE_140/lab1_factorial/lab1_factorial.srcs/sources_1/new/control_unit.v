@@ -21,66 +21,83 @@
 
 
 module control_unit(
-    input clk, GO, Error, GT,
-    output reg SEL, load_reg, load_cnt, OE, EN, done, error
-    );
-    
-    reg [2:0] curr, next;
-    parameter s0 = 3'b000;
-    parameter s1 = 3'b001;
-    parameter s2 = 3'b010;
-    parameter s3 = 3'b011;
-    parameter s4 = 3'b100;
-    
-    always @ (posedge clk) begin
-        curr <= next;
-    end
-    
-    always @ (*) begin
-        case (curr)
-            s0: begin
-                load_reg = 0;
-                load_cnt = 0;
-                SEL = 0;
-                EN = 0;
-                OE = 0;
-                error = 0;
-                done = 0;
-                if (GO) next = s1;
-                else next = s0;
-            end
-            s1: begin
-                if (!Error) begin
-                    load_reg = 1;
-                    load_cnt = 1;
-                    next = s2;
-                end
-                else begin
-                    error = 1;
-                    next = s0;
-                end
-            end
-            s2: begin
-                if (GT) begin
-                    load_reg = 0;
-                    EN = 0;
-                    SEL = 1;
-                    next = s3;
-                end
-                else begin
-                    next = s4;
-                end
-            end
-            s3: begin
-                load_reg = 1;
-                EN = 1;
-                next = s2;
-            end
-            s4: begin
-                OE = 1;
-                done = 1;
-            end
-        endcase
-    end
-    
+    input  clk,
+    input  rst,
+    input  GO,
+    input  Error,
+    input  GT,
+    output reg SEL,
+    output reg load_reg,
+    output reg load_cnt,
+    output reg OE,
+    output reg EN,
+    output reg done,
+    output reg error
+);
+
+  reg [2:0] curr, next;
+
+  localparam S0 = 3'b000;
+  localparam S1 = 3'b001;
+  localparam S2 = 3'b010;
+  localparam S3 = 3'b011;
+  localparam S4 = 3'b100;
+
+  always @(posedge clk or posedge rst) begin
+    if (rst) curr <= S0;
+    else     curr <= next;
+  end
+
+  always @* begin
+    next      = curr;
+    SEL       = 1'b0;
+    load_reg  = 1'b0;
+    load_cnt  = 1'b0;
+    OE        = 1'b0;
+    EN        = 1'b0;
+    done      = 1'b0;
+    error     = 1'b0;
+
+    case (curr)
+      S0: begin
+        if (GO) next = S1;
+      end
+
+      S1: begin
+        if (!Error) begin
+          load_reg = 1'b1;
+          load_cnt = 1'b1;
+          next     = S2;
+        end else begin
+          error    = 1'b1;
+          next     = S0;
+        end
+      end
+
+      S2: begin
+        if (GT) begin
+          SEL  = 1'b1;
+          next = S3;
+        end else begin
+          OE   = 1'b1;
+          done = 1'b1;
+          next = S4;
+        end
+      end
+
+      S3: begin
+        SEL      = 1'b1;
+        load_reg = 1'b1;
+        EN       = 1'b1;
+        next     = S2;
+      end
+
+      S4: begin
+        OE   = 1'b1;
+        done = 1'b1;
+        next = S0;
+      end
+    endcase
+  end
+
 endmodule

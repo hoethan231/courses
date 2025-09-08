@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Icydr/Code/courses/CMPE_140/lab1_factorial/lab1_factorial.srcs/sim_1/new/tb_factorial_program.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_factorial_program
+INFO: [VRFC 10-311] analyzing module tb_factorial_program
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'tb_factorial_program' [C:/Users/Icydr/Code/courses/CMPE_140/lab1_factorial/lab1_factorial.srcs/sim_1/new/tb_factorial_program.v:129]

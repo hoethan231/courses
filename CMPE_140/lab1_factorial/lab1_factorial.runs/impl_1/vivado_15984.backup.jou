@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Mon Sep  8 10:40:49 2025
+# Process ID         : 15984
+# Current directory  : C:/Users/Icydr/Code/courses/CMPE_140/lab1_factorial/lab1_factorial.runs/impl_1
+# Command line       : vivado.exe -log factorial_program.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source factorial_program.tcl -notrace
+# Log file           : C:/Users/Icydr/Code/courses/CMPE_140/lab1_factorial/lab1_factorial.runs/impl_1/factorial_program.vdi
+# Journal file       : C:/Users/Icydr/Code/courses/CMPE_140/lab1_factorial/lab1_factorial.runs/impl_1\vivado.jou
+# Running On         : DESKTOP-E9HN8NO
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 19045
+# Processor Detail   : Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz
+# CPU Frequency      : 2400 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 68608 MB
+# Swap memory        : 10200 MB
+# Total Virtual      : 78809 MB
+# Available Virtual  : 65499 MB
+#-----------------------------------------------------------
+source factorial_program.tcl -notrace

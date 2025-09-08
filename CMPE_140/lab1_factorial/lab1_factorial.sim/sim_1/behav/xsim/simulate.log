@@ -1,0 +1,12 @@
+Time resolution is 1 ps
+PASS: n=0 -> Q=1
+PASS: n=1 -> Q=1
+PASS: n=2 -> Q=2
+PASS: n=3 -> Q=6
+PASS: n=5 -> Q=120
+PASS: n=10 -> Q=3628800
+PASS: n=12 -> Q=479001600
+PASS (overflow): n=13 -> error=1
+PASS (overflow): n=20 -> error=1
+All testcases completed.
+$finish called at time : 1 us : File "C:/Users/Icydr/Code/courses/CMPE_140/lab1_factorial/lab1_factorial.srcs/sim_1/new/tb_factorial_program.v" Line 230

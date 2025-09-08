@@ -21,15 +21,43 @@
 
 
 module factorial_program(
-    input clk, go,
-    input [31:0] n,
-    output done, error,
+    input        clk,
+    input        rst,
+    input        go,
+    input  [31:0] n,
+    output       done,
+    output       error,
     output [31:0] Q
-    );
-    
-    wire load_reg, load_cnt, SEL, OE, EN, Error, GT;
-    
-    datapath        DP(clk, load_reg, load_cnt, SEL, OE, EN, n, Error, GT, Q);
-    control_unit    CU(clk, go, Error, GT, SEL, load_reg, load_cnt, OE, EN, done, error);
-    
+);
+
+  wire load_reg, load_cnt, SEL, OE, EN, Error, GT;
+
+  datapath DP (
+    .clk      (clk),
+    .load_reg (load_reg),
+    .load_cnt (load_cnt),
+    .SEL      (SEL),
+    .OE       (OE),
+    .EN       (EN),
+    .n        (n),
+    .Error    (Error),
+    .GT       (GT),
+    .product  (Q)
+  );
+
+  control_unit CU (
+    .clk      (clk),
+    .rst      (rst),
+    .GO       (go),
+    .Error    (Error),
+    .GT       (GT),
+    .SEL      (SEL),
+    .load_reg (load_reg),
+    .load_cnt (load_cnt),
+    .OE       (OE),
+    .EN       (EN),
+    .done     (done),
+    .error    (error)
+  );
+
 endmodule

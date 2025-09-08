@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Icydr" Host="DESKTOP-E9HN8NO" Pid="16340" HostCore="16" HostMemory="068608503808">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Icydr" Host="DESKTOP-E9HN8NO" Pid="15792" HostCore="16" HostMemory="068608503808">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Icydr" Host="DESKTOP-E9HN8NO" Pid="2160" HostCore="16" HostMemory="068608503808">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Icydr" Host="DESKTOP-E9HN8NO" Pid="8624" HostCore="16" HostMemory="068608503808">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Icydr" Host="DESKTOP-E9HN8NO" Pid="14100" HostCore="16" HostMemory="068608503808">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado.bat" Owner="Icydr" Host="DESKTOP-E9HN8NO" Pid="14736" HostCore="16" HostMemory="068608503808">
+    </Process>
+</ProcessHandle>
