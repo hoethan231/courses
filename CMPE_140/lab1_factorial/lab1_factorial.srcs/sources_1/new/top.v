@@ -2,25 +2,38 @@ module top(
 input clk,
 input rst,
 input HILO_sel,
+input [3:0] sw,
+input go,
 output [3:0] LEDSEL,
 output [6:0] LEDOUT
 );
-reg [31:0] test_val;
-// initial test_val = 32'hfedc_3210;
-initial test_val = 32'hba98_7654;
 
 wire clk_5kHz;
 wire [3:0] dig0, dig1, dig2, dig3, dig4, dig5, dig6, dig7;
 wire [3:0] HEX3, HEX2, HEX1, HEX0;
 wire [6:0] LED3, LED2, LED1, LED0;
+wire [31:0] switch_val = {28'b0, sw};
+reg [31:0] result_reg;
+wire [31:0] Q;
+
+factorial_program(.n(switch_val), .clk(clk),.rst(rst), .go(go), .done(done), .error(error), .Q(Q));
+
+always @ (posedge clk, posedge rst) begin
+    if (rst) begin
+        result_reg <= 32'b0;
+    end
+    if (done) begin
+        result_reg <= Q;
+    end
+end
+
 clk_gen U0 (
 .clk50MHz(clk),
 .rst(rst),
-//clksec4,
 .clk_5KHz(clk_5kHz)
 );
 bin2hex32 U1(
-.value(test_val),
+.value(result_reg),
 .dig0(dig0),
 .dig1(dig1),
 .dig2(dig2),

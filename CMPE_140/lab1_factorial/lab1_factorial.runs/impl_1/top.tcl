@@ -107,7 +107,7 @@ set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 4
   set_param general.usePosixSpawnForFork 1
-  set_param runs.launchOptions { -jobs 8  }
+  set_param runs.launchOptions { -jobs 12  }
   open_checkpoint top_routed.dcp
   set_property webtalk.parent_dir C:/Users/Icydr/Code/courses/CMPE_140/lab1_factorial/lab1_factorial.cache/wt [current_project]
 set_property TOP top [current_fileset]
