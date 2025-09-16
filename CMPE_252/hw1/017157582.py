@@ -330,7 +330,7 @@ def main():
     parser = argparse.ArgumentParser(description="Dijkstra visualization in Pygame (writes path to txt)")
     parser.add_argument("--coords", default="coords.txt", help="Path to coords.txt")
     parser.add_argument("--input", default="input.txt", help="Path to input.txt")
-    parser.add_argument("--out",   default="path.txt",   help="Output text file")
+    parser.add_argument("--out",   default="017157582.txt",   help="Output text file")
     parser.add_argument("--width", type=int, default=1000, help="Window width")
     parser.add_argument("--height", type=int, default=750, help="Window height")
     args = parser.parse_args()
