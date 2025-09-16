@@ -161,34 +161,29 @@ import pygame
 import imageio.v2 as imageio
 
 def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", window=(1000, 750), popup=False):
-    # --- Hard-coded video settings ---
     VIDEO_PATH = "017157582.mp4"
     FPS = 60
 
-    # Headless by default (no OS window)
     if not popup:
         os.environ.setdefault("SDL_VIDEODRIVER", "dummy")
 
     pygame.init()
     pygame.font.init()
 
-    # Create window or a hidden / dummy display
     flags = 0
     if popup and hasattr(pygame, "HIDDEN"):
-        flags |= 0  # visible normal window
+        flags |= 0
     elif not popup and hasattr(pygame, "HIDDEN"):
-        flags |= pygame.HIDDEN  # hidden window (still offscreen)
-    screen = pygame.display.set_mode(window, flags)  # works with dummy driver too
+        flags |= pygame.HIDDEN
+    screen = pygame.display.set_mode(window, flags)
     pygame.display.set_caption("Dijkstra — red edges: traversed, blue: current, red nodes: neighbors, green: final path")
     clock = pygame.time.Clock()
 
-    # Precompute all algorithm steps so we know total frames (for progress bar)
     steps = list(dijkstra_steps(n, start, adj))
     total_frames = len(steps)
     if total_frames == 0:
         raise RuntimeError("No frames produced. Check inputs (coords/input).")
 
-    # Final path (from the last step's prev/dist)
     last_state = steps[-1]
     if last_state["dist"][end] < math.inf:
         final_path_nodes = reconstruct_path_nodes(last_state["prev"], start, end)
@@ -197,11 +192,9 @@ def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", wind
         final_path_nodes = []
         final_path_edges = set()
 
-    # Write the path output once (second line = cumulative costs to each vertex in path)
     write_path_output(final_path_nodes, last_state["dist"], out_path)
 
-    # Open MP4 writer
-    writer = imageio.get_writer(VIDEO_PATH, fps=FPS, codec="libx264")  # add bitrate="6M" to shrink size
+    writer = imageio.get_writer(VIDEO_PATH, fps=FPS, codec="libx264")
 
     W, H = window
     w2s = make_world_to_screen(coords, W, H, margin=70)
@@ -215,7 +208,6 @@ def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", wind
 
     r = max(5, min(10, int(min(W, H) / 90)))
 
-    # Unique undirected edges & weights
     seen = set()
     edges = []
     weights = {}
@@ -240,7 +232,6 @@ def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", wind
         smx, smy = w2s(mx, my)
         edge_labels.append((smx, smy, font.render(f"{weights[(u, v)]:.2f}", True, BLACK)))
 
-    # Draw helper per step
     def draw_step(state, is_last=False):
         screen.fill(WHITE)
 
@@ -254,7 +245,6 @@ def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", wind
             yoff += 24
 
         traversed = state["traversed_edges"]
-        # edges
         for (u, v) in edges:
             x1, y1 = node_pos[u]
             x2, y2 = node_pos[v]
@@ -262,18 +252,15 @@ def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", wind
             width = 3 if color == RED else 1
             pygame.draw.line(screen, color, (x1, y1), (x2, y2), width)
 
-        # final path (on last frame)
         if is_last and final_path_edges:
             for (u, v) in final_path_edges:
                 x1, y1 = node_pos[u]
                 x2, y2 = node_pos[v]
                 pygame.draw.line(screen, GREEN, (x1, y1), (x2, y2), 6)
 
-        # edge labels
         for (sx, sy, surf) in edge_labels:
             screen.blit(surf, (sx - surf.get_width() // 2, sy - surf.get_height() // 2))
 
-        # nodes
         current = state["current"]
         neighbor_set = set(state["neighbors"])
         for i in range(1, n + 1):
@@ -287,12 +274,10 @@ def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", wind
             pygame.draw.circle(screen, col, (x, y), r)
             pygame.draw.circle(screen, BLACK, (x, y), r, 1)
 
-        # node labels
         for i, surf in node_labels:
             x, y = node_pos[i]
             screen.blit(surf, (x + r + 2, y - surf.get_height() // 2))
 
-        # status
         if is_last:
             dist_text = "unreachable" if last_state["dist"][end] == math.inf else f"{last_state['dist'][end]:.6f}"
             status = f"Done — shortest distance to {end}: {dist_text} | wrote: {out_path} | video: {VIDEO_PATH}"
@@ -302,7 +287,6 @@ def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", wind
 
     try:
         for i, state in enumerate(steps, start=1):
-            # keep window responsive if showing it
             if popup:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
@@ -313,11 +297,9 @@ def run_visualization(n, start, end, coords, adj, out_path="017157582.txt", wind
             if popup:
                 pygame.display.flip()
 
-            # capture the frame and write to mp4
-            frame = pygame.surfarray.array3d(screen).swapaxes(0, 1)  # (H, W, 3)
+            frame = pygame.surfarray.array3d(screen).swapaxes(0, 1)
             writer.append_data(frame)
 
-            # console progress bar
             progress_bar(i, total_frames, width=40, prefix="MP4")
 
             if popup:
