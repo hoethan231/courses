@@ -2,8 +2,9 @@ import math
 import sys
 import argparse
 import pygame
+import imageio.v2 as imageio
 
-# Loading Files
+# Taking Input
 def load_graph(coord_path="coords.txt", input_path="input.txt"):
     coords = [(-1, -1)]
     with open(coord_path, "r") as file:
@@ -19,16 +20,19 @@ def load_graph(coord_path="coords.txt", input_path="input.txt"):
     if len(coords) - 1 < n:
         raise ValueError(f"coords.txt has {len(coords)-1} points but n = {n}")
 
-    adj = {i: set() for i in range(1, n + 1)}
+    adj = {i: [] for i in range(1, n + 1)}
     for i in range(3, len(lines)):
         a, b, w = lines[i].split()
         a, b, w = int(a), int(b), float(w)
-        adj[a].add((b, w))
-        adj[b].add((a, w))
+        adj[a].append((b, w))
+        adj[b].append((a, w))
+
+    for i in range(1, n + 1):
+        adj[i].sort(key=lambda t: t[0])
 
     return n, start, end, coords, adj
 
-# Dijkstra with steps for visuals
+# Dijkstra with steps for Vizulization
 def dijkstra_steps(n, start, adj):
     dist = [math.inf] * (n + 1)
     visited = [False] * (n + 1)
@@ -86,6 +90,40 @@ def dijkstra_steps(n, start, adj):
         "visited": visited[:],
     }
 
+def reconstruct_path_nodes(prev, start, end):
+    path = []
+    v = end
+    if v is None:
+        return path
+    while v is not None:
+        path.append(v)
+        if v == start:
+            break
+        v = prev[v]
+    if not path or path[-1] != start:
+        return []
+    path.reverse()
+    return path
+
+def reconstruct_path_edges(prev, start, end):
+    path = reconstruct_path_nodes(prev, start, end)
+    edges = set()
+    for i in range(len(path) - 1):
+        u, v = path[i], path[i + 1]
+        edges.add((min(u, v), max(u, v)))
+    return edges
+
+def write_path_output(path_nodes, dist, out_path="017157582.txt"):
+    if path_nodes:
+        line1 = " ".join(str(i) for i in path_nodes)
+        line2 = " ".join(f"{dist[v]:.4f}" for v in path_nodes)
+    else:
+        line1 = ""
+        line2 = "inf"
+    with open(out_path, "w") as f:
+        f.write(line1 + "\n")
+        f.write(line2 + "\n")
+
 def make_world_to_screen(coords, width, height, margin=60):
     xs = [coords[i][0] for i in range(1, len(coords))]
     ys = [coords[i][1] for i in range(1, len(coords))]
@@ -105,26 +143,18 @@ def make_world_to_screen(coords, width, height, margin=60):
 
     return world_to_screen
 
-def reconstruct_path_edges(prev, start, end):
-    """Return set of undirected edge keys along the start→end shortest path."""
-    path_edges = set()
-    v = end
-    if v is None:
-        return path_edges
-    while v is not None and v != start:
-        u = prev[v]
-        if u is None:
-            return set()  # unreachable
-        key = (min(u, v), max(u, v))
-        path_edges.add(key)
-        v = u
-    return path_edges
+# Pygame Vizulization
+def run_visualization(n, start, end, coords, adj, out_path="path.txt", window=(1000, 750)):
 
-def run_visualization(n, start, end, coords, adj, window=(1000, 750)):
+    VIDEO_PATH = "017157582.mp4"
+    FPS = 60
+
     pygame.init()
-    pygame.display.set_caption("Dijkstra (Pygame) — edges: gray→red, current: blue, neighbors: red, final path: green")
+    pygame.display.set_caption("Dijkstra (Pygame) — red edges: traversed, blue: current, red nodes: neighbors, green: final path")
     screen = pygame.display.set_mode(window)
     clock = pygame.time.Clock()
+
+    writer = imageio.get_writer(VIDEO_PATH, fps=FPS, codec="libx264")
 
     W, H = window
     w2s = make_world_to_screen(coords, W, H, margin=70)
@@ -176,119 +206,137 @@ def run_visualization(n, start, end, coords, adj, window=(1000, 750)):
         }
 
     final_path_edges = None
+    final_path_nodes = None
+    path_written = False
 
     paused = False
     step_delay_ms = 5
     last_step_time = 0
 
     running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key in (pygame.K_ESCAPE, pygame.K_q):
+    try:
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     running = False
-                elif event.key == pygame.K_SPACE:
-                    paused = not paused
-                elif event.key == pygame.K_RIGHT:
-                    if paused:
+                elif event.type == pygame.KEYDOWN:
+                    if event.key in (pygame.K_ESCAPE, pygame.K_q):
+                        running = False
+                    elif event.key == pygame.K_SPACE:
+                        paused = not paused
+                    elif event.key == pygame.K_RIGHT:
+                        if paused:
+                            try:
+                                state = next(steps_gen)
+                            except StopIteration:
+                                pass
+                    elif event.key == pygame.K_r:
+                        steps_gen = dijkstra_steps(n, start, adj)
                         try:
                             state = next(steps_gen)
                         except StopIteration:
                             pass
-                elif event.key == pygame.K_r:
-                    steps_gen = dijkstra_steps(n, start, adj)
-                    try:
-                        state = next(steps_gen)
-                    except StopIteration:
-                        pass
-                    paused = False
-                    last_step_time = 0
-                    final_path_edges = None
+                        paused = False
+                        last_step_time = 0
+                        final_path_edges = None
+                        final_path_nodes = None
+                        path_written = False
 
-        now = pygame.time.get_ticks()
-        if not paused and (now - last_step_time >= step_delay_ms):
-            last_step_time = now
-            try:
-                state = next(steps_gen)
-            except StopIteration:
-                paused = True
+            now = pygame.time.get_ticks()
+            if not paused and (now - last_step_time >= step_delay_ms):
+                last_step_time = now
+                try:
+                    state = next(steps_gen)
+                except StopIteration:
+                    paused = True
 
-        if state["current"] is None and final_path_edges is None:
-            if state["dist"][end] < math.inf:
-                final_path_edges = reconstruct_path_edges(state["prev"], start, end)
-            else:
-                final_path_edges = set()
+            if state["current"] is None and final_path_edges is None:
+                if state["dist"][end] < math.inf:
+                    final_path_nodes = reconstruct_path_nodes(state["prev"], start, end)
+                    final_path_edges = reconstruct_path_edges(state["prev"], start, end)
+                else:
+                    final_path_nodes = []
+                    final_path_edges = set()
 
-        screen.fill(WHITE)
+            if state["current"] is None and not path_written:
+                write_path_output(final_path_nodes, state["dist"], out_path)
+                path_written = True
 
-        legend_lines = [
-            "Space: pause/resume   R: restart   Q/Esc: quit",
-            f"Step delay: {step_delay_ms} ms",
-            "Colors: blue = current node, red nodes = current neighbors, red edges = traversed, green = final path",
-        ]
-        yoff = 8
-        for line in legend_lines:
-            screen.blit(bigfont.render(line, True, BLACK), (10, yoff))
-            yoff += 24
+            screen.fill(WHITE)
 
-        traversed = state["traversed_edges"]
-        for (u, v) in edges:
-            x1, y1 = node_pos[u]
-            x2, y2 = node_pos[v]
-            color = RED if ((u, v) in traversed or (v, u) in traversed) else GRAY
-            width = 3 if color == RED else 1
-            pygame.draw.line(screen, color, (x1, y1), (x2, y2), width)
+            legend_lines = [
+                "Space: pause/resume   R: restart   Q/Esc: quit",
+                f"Step delay: {step_delay_ms} ms",
+                "Colors: blue=current, red nodes=neighbors, red edges=traversed, green=final path",
+            ]
+            yoff = 8
+            for line in legend_lines:
+                screen.blit(bigfont.render(line, True, BLACK), (10, yoff))
+                yoff += 24
 
-        if final_path_edges:
-            for (u, v) in final_path_edges:
+            traversed = state["traversed_edges"]
+            for (u, v) in edges:
                 x1, y1 = node_pos[u]
                 x2, y2 = node_pos[v]
-                pygame.draw.line(screen, GREEN, (x1, y1), (x2, y2), 6)
+                color = RED if ((u, v) in traversed or (v, u) in traversed) else GRAY
+                width = 3 if color == RED else 1
+                pygame.draw.line(screen, color, (x1, y1), (x2, y2), width)
 
-        for (sx, sy, surf) in edge_labels:
-            screen.blit(surf, (sx - surf.get_width() // 2, sy - surf.get_height() // 2))
+            if final_path_edges:
+                for (u, v) in final_path_edges:
+                    x1, y1 = node_pos[u]
+                    x2, y2 = node_pos[v]
+                    pygame.draw.line(screen, GREEN, (x1, y1), (x2, y2), 6)
 
-        current = state["current"]
-        neighbor_set = set(state["neighbors"])
-        for i in range(1, n + 1):
-            x, y = node_pos[i]
-            if current is not None and i == current:
-                col = BLUE
-            elif i in neighbor_set:
-                col = (220, 30, 30)
+            for (sx, sy, surf) in edge_labels:
+                screen.blit(surf, (sx - surf.get_width() // 2, sy - surf.get_height() // 2))
+
+            current = state["current"]
+            neighbor_set = set(state["neighbors"])
+            for i in range(1, n + 1):
+                x, y = node_pos[i]
+                if current is not None and i == current:
+                    col = BLUE
+                elif i in neighbor_set:
+                    col = (220, 30, 30) 
+                else:
+                    col = (210, 210, 210)
+                pygame.draw.circle(screen, col, (x, y), r)
+                pygame.draw.circle(screen, BLACK, (x, y), r, 1)
+
+            for i, surf in node_labels:
+                x, y = node_pos[i]
+                screen.blit(surf, (x + r + 2, y - surf.get_height() // 2))
+
+            if state["current"] is None:
+                dist_text = "unreachable" if state["dist"][end] == math.inf else f"{state['dist'][end]:.6f}"
+                status = f"Done — shortest distance to {end}: {dist_text} | wrote: {out_path} | video: {VIDEO_PATH}"
             else:
-                col = (210, 210, 210)
-            pygame.draw.circle(screen, col, (x, y), r)
-            pygame.draw.circle(screen, BLACK, (x, y), r, 1)
+                status = f"Processing node {state['current']}"
+            screen.blit(bigfont.render(status, True, BLACK), (10, H - 32))
 
-        for i, surf in node_labels:
-            x, y = node_pos[i]
-            screen.blit(surf, (x + r + 2, y - surf.get_height() // 2))
+            pygame.display.flip()
 
-        if state["current"] is None:
-            dist_text = "unreachable" if state["dist"][end] == math.inf else f"{state['dist'][end]:.3f}"
-            status = f"Done — shortest distance to {end}: {dist_text}"
-        else:
-            status = f"Processing node {state['current']}"
-        screen.blit(bigfont.render(status, True, BLACK), (10, H - 32))
+            frame = pygame.surfarray.array3d(screen).swapaxes(0, 1)
+            writer.append_data(frame)
 
-        pygame.display.flip()
-        clock.tick(60)
+            clock.tick(FPS)
 
-    pygame.quit()
+    finally:
+        writer.close()
+        pygame.quit()
 
 def main():
-    parser = argparse.ArgumentParser(description="Dijkstra visualization in Pygame (with final green path)")
+    parser = argparse.ArgumentParser(description="Dijkstra visualization in Pygame (writes path to txt)")
     parser.add_argument("--coords", default="coords.txt", help="Path to coords.txt")
     parser.add_argument("--input", default="input.txt", help="Path to input.txt")
+    parser.add_argument("--out",   default="path.txt",   help="Output text file")
     parser.add_argument("--width", type=int, default=1000, help="Window width")
     parser.add_argument("--height", type=int, default=750, help="Window height")
     args = parser.parse_args()
 
     n, start, end, coords, adj = load_graph(args.coords, args.input)
-    run_visualization(n, start, end, coords, adj, window=(args.width, args.height))
+    run_visualization(n, start, end, coords, adj, out_path=args.out, window=(args.width, args.height))
 
 if __name__ == "__main__":
     main()
