@@ -1,5 +1,5 @@
 CC=nvcc
-ARCH=-arch=sm_35
+ARCH=-arch=sm_75
 SOURCES=main.cu
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=vecadd
