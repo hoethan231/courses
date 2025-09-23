@@ -7,5 +7,6 @@
 CMPE_126/**/*.txt
 CMPE_188/data/
 .vs/
+.DS_Store
 
 **/__pycache__/
