@@ -85,13 +85,16 @@ def main():
     exe = compile_cuda(arch=arch)
 
     metric = "Kernal_ms"
-    q1 = sweep_threads_per_block(exe, N, POW2, metric=metric)
+    blocks_choices = [1, 32, 256]
+    q1 = sweep_threads_per_block(exe, N, blocks_choices, metric=metric)
     plot_series_dict(q1, "Threads per block", f"{metric}", f"Q1: {metric} vs TPB (blocks fixed) @ N={N}")
 
-    q2 = sweep_blocks(exe, N, POW2, metric=metric)
+    tpb_choices = [32, 128, 512]
+    q2 = sweep_blocks(exe, N, tpb_choices, metric=metric)
     plot_series_dict(q2, "Blocks", f"{metric}", f"Q2: {metric} vs Blocks (TPB fixed) @ N={N}")
 
-    q3 = sweep_fixed_total_threads(exe, N, POW2, metric=metric)
+    totals = [8192, 65536, 1048576]
+    q3 = sweep_fixed_total_threads(exe, N, totals, metric=metric)
     plot_series_dict(q3, "Threads per block (blocks = total/tpb)", f"{metric}",
                      f"Q3: {metric} vs TPB (Total threads fixed) @ N={N}")
 
