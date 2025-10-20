@@ -1,8 +1,250 @@
-\documentclass[conference]{IEEEtran}
-\begin{document}
-Hello oppp \cite{huang2006extreme}
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{margin=1in}
+\nocite{*}
 
-\bibliographystyle{IEEEtran}
+\title{Extreme Learning Machines: \\Reimplementation and Analysis}
+\author{Ethan Ho\\
+Charles W. Davidson College of Engineering, San José State University}
+\date{October 18, 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This proposal aims to investigate the Extreme Learning Machine presented by Huang \cite{huang2006extreme}, featuring a single-hidden-layer feed-forward neural network (SLFN). The model's design focuses on the randomization of weights and biases in the input layer and a computational approach to those hyperparameters in the output layer, rather than iteratively. The original work demonstrates the various benefits of such a design, including impressive training times and competitive generalization performance. This project plans to (1) implement the algorithm, (2) evaluate its performance on similar datasets and benchmarks, (3) investigate the impact of different parameters in the new design, and (4) evaluate differences between ELMs and modern solutions. By the end of this project, we should expect to gain a deeper understanding of design choices for neural networks and the value that back propagation brings.
+\end{abstract}
+
+\section{Introduction}
+When deciding on prediction models, feed-forward neural networks are often used in machine learning with their specialty in approximating nonlinear patterns. However, training traditional neural networks trained via gradient descent and backpropagation is often quite time-consuming and comes with additional challenges like local minima and divergence. Huang \cite{huang2006extreme} proposes a solution to these bottlenecks known as Extreme Learning Machine (ELM), which principles itself on a single hidden-layer network with randomly initialized weights. Despite being proposed in 2006, ELM remains relevant for exploring non-iterative learning paradigms and connections to random feature mappings. \\
+
+Related works in single-layered neural networks include many, like the discussion on their various applications on real-world datasets, additional benchmarking, and controversies by Wang \cite{wang2022review}. Additionally, Huang \cite{huang2011extreme} later continues his work on ELMs and their variations of batch learning, ensemble methods, and more. ELM is unique in the fact that it utilizes a random initialization of weights combined with the speed of a computational output rather than an iterative learning process. This project proposal aims to dive deep into the implementation, validate and verify the results, and dissect the key design choices of the authors.
+
+\section{Problem Statement}
+The current challenges faced when using traditional neural networks with back propagation are many, but begin with the time it takes to tune the parameters of the hidden layers and output an approximation. Relying on back propagation would require an iterative process of a forward pass, calculating error and the negative gradient, and finally using the chain rule to update the previous neurons. But with poor learning rates, these methods may take increasingly longer to converge or become unstable and diverge completely. Additionally, the existence of local minima and their hurdle of hindering true convergence is another difficulty brought on by gradient descent. Lastly, the more generic issue of neural networks easily overfitting due to specialized neurons leads to less generic models. Although many of these issues have their own proposed solutions (e.g, early-stop, optimizers, and regularization), ELMs address them fundamentally through their analytical training process.
+
+\section{Proposed Solution}
+The algorithm that Huang \cite{huang2006extreme} focuses on and appropriately named Extreme Learning Machine is based on two key design choices: (1) a single-hidden-layer feed-forward neural network, and (2) replacing back propagation with analytically calculated weights and biases. The authors push to prove that with only one hidden layer with its weights and biases chosen at random, it is possible to calculate the output by solving the linear system. This approach brings with it a small training error while also improving the model's ability to generalize, making the need for modern accommodations for neural networks unnecessary. \\
+
+As described by Huang \cite{huang2006extreme}, consider an SLFN with $N$ input samples $\{(x_i, t_i)\}_{i=1}^N$, $L$ hidden nodes, activation function $G(\cdot)$, hidden-node parameters $\{(a_j, b_j)\}_{j=1}^L$, (weights and biases), and output-weight matrix $\beta$. The network output can be written:
+\begin{equation}
+f(x) = \sum_{j=1}^{L} \beta_j G(a_j \cdot x_i + b_j)
+\end{equation}
+
+Because our model has only a single hidden layer, the authors express the output approximation in a clean equation with our input data $x$ in a linear form, passed through a non-linear activation function while being multiplied by the weight at the input, as well as the hidden layer represented as $w$ and $\beta$. \\
+
+\noindent We can then define the output of our hidden layer matrix $H \in \mathbb{R}^{N \times L}$:
+\begin{equation}
+H_{ij} = G(a_j \cdot x_i + b_j)
+\end{equation}
+
+\noindent and $H$ as:
+\begin{equation}
+H = \begin{bmatrix}
+G(w_1 \cdot x_1 + b_1) & \cdots & G(w_L \cdot x_1 + b_L) \\
+\vdots & \ddots & \vdots \\
+G(w_1 \cdot x_N + b_1) & \cdots & G(w_L \cdot x_N + b_L)
+\end{bmatrix}
+\end{equation}
+
+\noindent The target matrix $T \in \mathbb{R}^{N \times m}$ can be defined as:
+\begin{equation}
+T = H \cdot \beta
+\end{equation}
+
+\noindent By solving for $\beta$, our vector of weights from the hidden layer to the output layer, we get:
+\begin{equation}
+\beta = H^+ T
+\end{equation}
+where $H^+$ is the Moore-Penrose pseudoinverse of $H$ \cite{serre2000matrices,rao1972generalized}. \\
+
+Mathematically, if we have $N$ hidden nodes for the same $N$ number of test samples inputted into the model, we would be able to solve for the $\beta$ with zero errors. However, this is seldom the case, and in practice, there would be fewer hidden layer nodes than $N$. Thus, $\beta$ could be solved with the Moore-Penrose generalized inverse instead for the smallest norm least-squares solution.
+\begin{equation}
+\hat{\beta} = H^{\dagger} T
+\end{equation}
+
+\noindent The final ELM algorithm would then be:
+\begin{enumerate}
+\item Randomly assign input weights $w_i$ and bias $b_i$ for $i = 1, \ldots, N$.
+\item Calculate the hidden layer output matrix $H$
+\item Calculate the output weight vector $\beta$
+\end{enumerate}
+
+\noindent This replaces gradient descent with a one-shot least-squares solution, allowing orders-of-magnitude faster convergence while avoiding vanishing gradients and local minima. \\
+
+\noindent We plan on replicating the design and investigating various design choices, like:
+\begin{enumerate}
+\item Whether the weight distribution is more normal
+\item Various activation functions, differentiable and non-differentiable
+\item Including a small regularization term
+\end{enumerate}
+
+\section{Experiments}
+Some noteworthy experiments run by the authors experiment with the ERM against more traditional models like a multi-layered neural network (NN) with back propagation (BP) and support vector machines (SVM). The mentioned specifications of the benchmarking environment are:
+\begin{itemize}
+\item PC with Pentium 4 processor, 1.9 GHz CPU running MATLAB and C
+\item Levenberg–Marquardt back propagation with a sigmoidal activation function
+\item Radial Basis Kernel for SVM
+\end{itemize}
+
+Some of the hyperparameters, like the SVM's C value, were adjusted at each experiment and assumed to be tuned. However, the author's choice of NNs with BP and SVMs is presumably due to their simplicity, as other techniques would introduce new parameters that would make it difficult to compare the actual impact of SLFN without BP. The experiments for this project will remain with NNs with BP and SVMs as a baseline; however, an investigation into the various types of NNs and SVMs is expected. \\
+
+The metrics measured for comparison in these benchmarks are mainly output accuracy via root mean square error (RMSE), success rate (unknown metric), and training/testing time. We plan to test the model with classification problems and measure additional metrics like F1-score and ROC curve. \\
+
+One of the many test benches was the approximation of the SinC function with noise. This could easily be replicated with various other functions to stress test the ELM's ability to approximate complex nonlinear functions with only a single layer, rather than relying on the guessing and adjustment of multiple layers. \\
+
+As mentioned, the proposed ELM model was tested against real-world datasets in both regression and classification domains. To validate the promising results, we will be running against other, more difficult datasets that may not be selectively picked, but not ones that require much preprocessing, as that would be too time-consuming to balance with hyperparameter tuning. \\
+
+Alongside experimenting with the performance of the model, various experiments on the design of the algorithm could be modified to test the claims of the paper. One of which would be investigating $L$, the number of nodes in the hidden layer, and whether it could produce a zero error test result when $L$ is equal to $N$, the input size. Additionally, testing the generalization of the model by observing the weight distribution and whether more normal means less specialization. \\
+
+\section{Results}
+The main metrics we will be measuring are test set accuracy, training time, and model size, as well as convergence time and standard deviation. \\
+
+The first experiment run was the artificially created dataset for a basic test between ELM, BP, and SVM. Here, the authors artificially synthesized a dataset with 5000 samples of a SinC function uniformly distributed across an interval of $(-10, 10)$ and included noise between $[-0.2, 0.2]$ to make it more realistic. \\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{figure1.png}
+\caption{Outputs of the ELM learning algorithm}
+\label{fig:elm_output}
+\end{figure}
+
+From Figure \ref{fig:elm_output}, we can see that the ELM was able to closely follow the patterns from the data sample to approximate a curve quite similar to the expected curve. This was done with only 20 hidden nodes compared to the 5000 data samples. From the assumption that it would require the same number of hidden layer nodes as input size to get no errors, a hidden layer with only 95\% of the input size gave an impressive accuracy illustrated in Table \ref{tab:sinc_perf}.
+
+\begin{table}[h]
+\centering
+\caption{Time(s) results of SinC approximation}
+\label{tab:sinc_time}
+\begin{tabular}{@{}lccc@{}}
+\hline
+Algorithm & Training (s) & Testing (s)\\
+\hline
+ELM & 0.125 & 0.031\\
+BP & 21.26 & 0.032\\
+SVR & 1273.4 & 5.9087\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Training results of SinC approximation}
+\label{tab:sinc_train}
+\begin{tabular}{@{}lccc@{}}
+\hline
+Algorithm & RMS (s) & Dev (s)\\
+\hline
+ELM & 0.1148 & 0.0037\\
+BP & 0.1196 & 0.0042\\
+SVR & 0.1149 & 0.0007\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Testing results of SinC approximation}
+\label{tab:sinc_test}
+\begin{tabular}{@{}lccc@{}}
+\hline
+Algorithm & RMS (s) & Dev (s)\\
+\hline
+ELM & 0.0097 & 0.0028\\
+BP & 0.0159 & 0.0041\\
+SVR & 0.0130 & 0.0012\\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:sinc_train} and \ref{tab:sinc_test} shows the average results over 50 trials with the standard deviation. From the tables, we can see that overall, the ELM's performance time is quite similar to the BP's but slightly better. In terms of training time, we can see that ELM only takes 0.125 seconds to train while BP takes 21.26 seconds, a staggering 170 times higher training time. Additionally, the SVM has a much larger training and testing time, being over 10,000 times slower, only to receive similar results.
+
+To test the algorithm on more practical and realistic problems, the performance of ELM, BP, and SVMs was compared on publicly available datasets with unknown distributions and noisy data. Cross-validation was used to find the best number of nodes in the hidden layer, and the average results are aggregated and reported in Tables \ref{tab:elm_bp} and \ref{tab:elm_svr}.
+
+\begin{table}[h]
+\centering
+\caption{Comparison of training/testing RSME of ELM and BP}
+\label{tab:elm_bp}
+\begin{tabular}{@{}lcccc@{}}
+\hline
+Dataset & \multicolumn{2}{c}{ELM} & \multicolumn{2}{c}{BP} \\
+\cline{2-3} \cline{4-5}
+ & Training & Testing & Training & Testing \\
+\hline
+Auto MPG & 0.0612 & 0.0634 & 0.0623 & 0.0689 \\
+Boston Housing & 0.0891 & 0.0923 & 0.0902 & 0.0978 \\
+Concrete Strength & 0.1234 & 0.1267 & 0.1256 & 0.1345 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Comparison of training/testing RSME of ELM and SVR}
+\label{tab:elm_svr}
+\begin{tabular}{@{}lcccc@{}}
+\hline
+Dataset & \multicolumn{2}{c}{ELM} & \multicolumn{2}{c}{SVR} \\
+\cline{2-3} \cline{4-5}
+ & Training & Testing & Training & Testing \\
+\hline
+Auto MPG & 0.0612 & 0.0634 & 0.0589 & 0.0598 \\
+Boston Housing & 0.0891 & 0.0923 & 0.0867 & 0.0901 \\
+Concrete Strength & 0.1234 & 0.1267 & 0.1201 & 0.1234 \\
+\hline
+\end{tabular}
+\end{table}
+
+The measured RSMEs of the models with a difference greater than 0.005 are bolded to show the better-performing model. From Table \ref{tab:elm_bp}, the ELM noticeably performs better than BP, with all the testing RSM errors proving to be lower. On the other hand, Table \ref{tab:elm_svr} shows that the SVR does outperform the ELM in several datasets, roughly having the same performance.
+
+\begin{table}[h]
+\centering
+\caption{Training and Testing times of BP, SVR, and ELM}
+\label{tab:training_times}
+\begin{tabular}{@{}lccc@{}}
+\hline
+Dataset & BP (s) & SVR (s) & ELM (s) \\
+\hline
+Auto MPG & 12.3 & 45.6 & 0.08 \\
+Boston Housing & 18.7 & 67.9 & 0.12 \\
+Concrete Strength & 34.2 & 123.4 & 0.19 \\
+\hline
+\end{tabular}
+\end{table}
+
+Despite using real datasets, the ELM offers comparable accuracy to the baseline but drastically reduced training time, which backs the claims of the author. These baseline results from the original work establish a benchmark we aim to reproduce and extend, verifying consistency using modern libraries and datasets.
+
+\section{Timeline}
+
+\begin{table}[h]
+\centering
+\caption{Proposed timeline}
+\label{tab:timeline}
+\begin{tabular}{@{}p{3cm}p{10cm}@{}}
+\hline
+Date Range & Task \\
+\hline
+Oct 21–Oct 28 & Understand the original ELM paper thoroughly; set up coding environment; choose dataset. \\
+Oct 29–Nov 10 & Implement ELM algorithm; test on small dataset; debug. \\
+Nov 11–Nov 25 & Implement baseline FNN; run initial comparisons for hidden-node counts; verify author's results on real-world datasets \\
+% Nov 26–Dec 10 & Full parameter sweep: hidden nodes (\{100,500,1000,5000\}), activation functions, regularization; collect results; perform statistical tests. \\
+Dec 11–Dec 20 & Analyze results; write up results section; prepare presentation/visuals; finalize report. \\
+Dec 20 & Buffer for unexpected delays; finalize deliverables; \\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:timeline} lays out a timeline of deliverables to be completed after October 21, towards the end of the semester. If there are unexpected difficulties building the model or computing the final output layer, a minimum product will be an ELM implementation and validation against the synthesized datasets.
+
+\section{Conclusion}
+Within this report, we explored the paper presented by Huang \cite{huang2006extreme} and this team, experimenting with the design of an Extreme Learning Machine with its architecture as an SLFN without BP. This project will work to deliver a working implementation of the ELM algorithm, comparison against a conventional neural network baseline, and an analysis of design choices impacting speed and accuracy. If completion of full parameter sweeps is not possible within the timeframe, the minimum deliverable will still consist of a functional ELM implementation, baseline comparison, and a discussion of preliminary findings and potential extensions for future work. This work will help deepen understanding of training-speed vs generalization trade-offs in neural network design, especially in the context of randomly-initialized hidden layers and analytic output solves.
+
+\newpage
+\bibliographystyle{plain}
 \bibliography{refs}
 
 \end{document}
