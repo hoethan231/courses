@@ -10,7 +10,7 @@
 \title{Extreme Learning Machines: \\Reimplementation and Analysis}
 \author{Ethan Ho\\
 Charles W. Davidson College of Engineering, San José State University}
-\date{October 18, 2025}
+\date{October 21, 2025}
 
 \begin{document}
 
@@ -114,87 +114,79 @@ The first experiment run was the artificially created dataset for a basic test b
 \label{fig:elm_output}
 \end{figure}
 
-From Figure \ref{fig:elm_output}, we can see that the ELM was able to closely follow the patterns from the data sample to approximate a curve quite similar to the expected curve. This was done with only 20 hidden nodes compared to the 5000 data samples. From the assumption that it would require the same number of hidden layer nodes as input size to get no errors, a hidden layer with only 95\% of the input size gave an impressive accuracy illustrated in Table \ref{tab:sinc_perf}.
+From Figure \ref{fig:elm_output}, we can see that the ELM was able to closely follow the patterns from the data sample to approximate a curve quite similar to the expected curve. This was done with only 20 hidden nodes compared to the 5000 data samples. From the assumption that it would require the same number of hidden layer nodes as input size to get no errors, a hidden layer with only 95\% of the input size gave an impressive accuracy illustrated in Table \ref{tab:sinc_res}.
 
 \begin{table}[h]
 \centering
-\caption{Time(s) results of SinC approximation}
-\label{tab:sinc_time}
-\begin{tabular}{@{}lccc@{}}
+\caption{Performance results of SinC approximation}
+\label{tab:sinc_res}
+\begin{tabular}{@{}lcccccc@{}}
 \hline
-Algorithm & Training (s) & Testing (s)\\
+Algorithms & \multicolumn{2}{c}{Time(s)} & \multicolumn{2}{c}{Training} & \multicolumn{2}{c}{Testing}\\
+\cline{2-3} \cline{4-5} \cline{6-7}
+ & Training & Testing & RMS & Dev & RMS & Dev \\
 \hline
-ELM & 0.125 & 0.031\\
-BP & 21.26 & 0.032\\
-SVR & 1273.4 & 5.9087\\
+ELM & 0.125 & 0.031 & 0.1148 & 0.0037 & 0.0097 & 0.0028\\
+BP & 21.26 & 0.032 & 0.1196 & 0.0042 & 0.0159 & 0.0041\\
+SVR & 1273.4 & 5.9087 & 0.1149 & 0.0007 & 0.0130 & 0.0012\\
 \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[h]
-\centering
-\caption{Training results of SinC approximation}
-\label{tab:sinc_train}
-\begin{tabular}{@{}lccc@{}}
-\hline
-Algorithm & RMS (s) & Dev (s)\\
-\hline
-ELM & 0.1148 & 0.0037\\
-BP & 0.1196 & 0.0042\\
-SVR & 0.1149 & 0.0007\\
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[h]
-\centering
-\caption{Testing results of SinC approximation}
-\label{tab:sinc_test}
-\begin{tabular}{@{}lccc@{}}
-\hline
-Algorithm & RMS (s) & Dev (s)\\
-\hline
-ELM & 0.0097 & 0.0028\\
-BP & 0.0159 & 0.0041\\
-SVR & 0.0130 & 0.0012\\
-\hline
-\end{tabular}
-\end{table}
-
-Table \ref{tab:sinc_train} and \ref{tab:sinc_test} shows the average results over 50 trials with the standard deviation. From the tables, we can see that overall, the ELM's performance time is quite similar to the BP's but slightly better. In terms of training time, we can see that ELM only takes 0.125 seconds to train while BP takes 21.26 seconds, a staggering 170 times higher training time. Additionally, the SVM has a much larger training and testing time, being over 10,000 times slower, only to receive similar results.
+Table \ref{tab:sinc_res} shows the average results over 50 trials with the standard deviation. From the tables, we can see that overall, the ELM's performance time is quite similar to the BP's but slightly better. In terms of training time, we can see that ELM only takes 0.125 seconds to train while BP takes 21.26 seconds, a staggering 170 times higher training time. Additionally, the SVM has a much larger training and testing time, being over 10,000 times slower, only to receive similar results.
 
 To test the algorithm on more practical and realistic problems, the performance of ELM, BP, and SVMs was compared on publicly available datasets with unknown distributions and noisy data. Cross-validation was used to find the best number of nodes in the hidden layer, and the average results are aggregated and reported in Tables \ref{tab:elm_bp} and \ref{tab:elm_svr}.
 
 \begin{table}[h]
 \centering
-\caption{Comparison of training/testing RSME of ELM and BP}
+\caption{Comparison of training/testing RSME of BP and ELM}
 \label{tab:elm_bp}
 \begin{tabular}{@{}lcccc@{}}
 \hline
-Dataset & \multicolumn{2}{c}{ELM} & \multicolumn{2}{c}{BP} \\
+\textbf{Data sets} & \multicolumn{2}{c}{\textbf{BP}} & \multicolumn{2}{c}{\textbf{ELM}} \\
 \cline{2-3} \cline{4-5}
  & Training & Testing & Training & Testing \\
 \hline
-Auto MPG & 0.0612 & 0.0634 & 0.0623 & 0.0689 \\
-Boston Housing & 0.0891 & 0.0923 & 0.0902 & 0.0978 \\
-Concrete Strength & 0.1234 & 0.1267 & 0.1256 & 0.1345 \\
+Abalone & 0.0785 & 0.0874 & 0.0803 & \textbf{0.0824} \\
+Delta ailerons & 0.0409 & 0.0481 & 0.0423 & \textbf{0.0431} \\
+Delta elevators & 0.0544 & 0.0592 & 0.0550 & 0.0568 \\
+Computer activity & 0.0273 & 0.0409 & 0.0316 & 0.0382 \\
+Census (house8L) & 0.0596 & 0.0685 & 0.0624 & 0.0660 \\
+Auto price & 0.0443 & 0.1157 & 0.0754 & \textbf{0.0994} \\
+Triazines & 0.1438 & 0.2197 & 0.1897 & \textbf{0.2002} \\
+Machine CPU & 0.0352 & 0.0826 & 0.0332 & \textbf{0.0539} \\
+Servo & 0.0794 & 0.1276 & 0.0707 & \textbf{0.1196} \\
+Breast cancer & 0.2788 & 0.3155 & 0.2470 & \textbf{0.2679} \\
+Bank domains & 0.0342 & 0.0379 & 0.0406 & 0.0366 \\
+California housing & 0.1046 & 0.1285 & 0.1217 & 0.1267 \\
+Stocks domain & 0.0179 & 0.0358 & 0.0251 & 0.0348 \\
 \hline
 \end{tabular}
 \end{table}
 
 \begin{table}[h]
 \centering
-\caption{Comparison of training/testing RSME of ELM and SVR}
+\caption{Comparison of training/testing RMSE for SVR and ELM}
 \label{tab:elm_svr}
 \begin{tabular}{@{}lcccc@{}}
 \hline
-Dataset & \multicolumn{2}{c}{ELM} & \multicolumn{2}{c}{SVR} \\
+\textbf{Data sets} & \multicolumn{2}{c}{\textbf{SVR}} & \multicolumn{2}{c}{\textbf{ELM}} \\
 \cline{2-3} \cline{4-5}
  & Training & Testing & Training & Testing \\
 \hline
-Auto MPG & 0.0612 & 0.0634 & 0.0589 & 0.0598 \\
-Boston Housing & 0.0891 & 0.0923 & 0.0867 & 0.0901 \\
-Concrete Strength & 0.1234 & 0.1267 & 0.1201 & 0.1234 \\
+Abalone & 0.0759 & 0.0784 & 0.0803 & 0.0824 \\
+Delta ailerons & 0.0418 & 0.0429 & 0.0423 & 0.0431 \\
+Delta elevators & 0.0534 & 0.0540 & 0.0545 & 0.0568 \\
+Computer activity & 0.0464 & 0.0470 & 0.0316 & \textbf{0.0382} \\
+Census (house8L) & 0.0718 & 0.0746 & 0.0624 & \textbf{0.0660} \\
+Auto price & 0.0652 & 0.0937 & \textbf{0.0754} & 0.0994 \\
+Triazines & 0.1432 & 0.1829 & \textbf{0.1897} & 0.2002 \\
+Machine CPU & 0.0574 & 0.0811 & 0.0332 & \textbf{0.0539} \\
+Servo & 0.0840 & 0.1177 & 0.0707 & 0.1196 \\
+Breast cancer & 0.2278 & 0.2643 & 0.2470 & 0.2679 \\
+Bank domains & 0.0454 & 0.0467 & 0.0406 & \textbf{0.0366} \\
+California housing & 0.1089 & 0.1180 & \textbf{0.1217} & 0.1267 \\
+Stocks domain & 0.0503 & 0.0518 & 0.0251 & \textbf{0.0348} \\
 \hline
 \end{tabular}
 \end{table}
@@ -203,20 +195,46 @@ The measured RSMEs of the models with a difference greater than 0.005 are bolded
 
 \begin{table}[h]
 \centering
-\caption{Training and Testing times of BP, SVR, and ELM}
+\caption{Training and Testing Times (in seconds) for BP, SVR, and ELM}
 \label{tab:training_times}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}lcccccc@{}}
 \hline
-Dataset & BP (s) & SVR (s) & ELM (s) \\
+\textbf{Data sets} & \multicolumn{2}{c}{\textbf{BP (s)}} & \multicolumn{2}{c}{\textbf{SVR (s)}} & \multicolumn{2}{c}{\textbf{ELM (s)}} \\
+\cline{2-3} \cline{4-5} \cline{6-7}
+ & Training & Testing & Training & Testing & Training & Testing \\
 \hline
-Auto MPG & 12.3 & 45.6 & 0.08 \\
-Boston Housing & 18.7 & 67.9 & 0.12 \\
-Concrete Strength & 34.2 & 123.4 & 0.19 \\
+Abalone & 1.7562 & 0.0063 & 1.6123 & 0.3223 & 0.0125 & 0.0297 \\
+Delta ailerons & 2.7525 & 0.0156 & 0.6726 & 0.2231 & 0.0591 & 0.0627 \\
+Delta elevators & 1.1938 & 0.0125 & 1.1210 & 0.5868 & 0.2812 & 0.2047 \\
+Computer activity & 67.4400 & 0.0688 & 1.0149 & 0.3027 & 0.2951 & 0.1720 \\
+Census (house8L) & 8.0647 & 0.0457 & 11.2510 & 4.1469 & 1.0795 & 0.6298 \\
+Auto price & 0.2456 & $<10^{-4}$ & 0.0042 & 0.0465 & 0.0016 & $<10^{-4}$ \\
+Triazines & 0.5484 & $<10^{-4}$ & 0.0086 & 0.0540 & $<10^{-4}$ & $<10^{-4}$ \\
+Machine CPU & 0.2354 & $<10^{-4}$ & 0.0018 & 0.0421 & 0.0015 & $<10^{-4}$ \\
+Servo & 0.2447 & $<10^{-4}$ & 0.0045 & 0.0394 & $<10^{-4}$ & $<10^{-4}$ \\
+Breast cancer & 0.3856 & $<10^{-4}$ & 0.0064 & 0.0591 & $<10^{-4}$ & $<10^{-4}$ \\
+Bank domains & 7.5060 & 0.0466 & 1.6084 & 0.3021 & 0.6434 & 0.2205 \\
+California housing & 6.5320 & 0.0469 & 74.1840 & 10.4530 & 1.1177 & 0.3033 \\
+Stocks domain & 1.0487 & 0.0063 & 0.0690 & 0.0637 & 0.0172 & 0.0297 \\
 \hline
 \end{tabular}
 \end{table}
 
-Despite using real datasets, the ELM offers comparable accuracy to the baseline but drastically reduced training time, which backs the claims of the author. These baseline results from the original work establish a benchmark we aim to reproduce and extend, verifying consistency using modern libraries and datasets.
+
+Despite using real datasets, Table \ref{tab:training_times} shows that the ELM offers comparable accuracy to the baseline but drastically reduced training time, which backs the claims of the author. These baseline results from the original work establish a benchmark we aim to reproduce and extend, verifying consistency using modern libraries and datasets.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{figure2.png}
+\caption{Outputs of the ELM learning algorithm}
+\label{fig:hidden_nodes}
+\end{figure}
+
+\section{Effect of Hidden-Layer Width on Generalization}
+
+Figure~\ref{fig:hidden_nodes} shows the trend between the number of hidden nodes in the ELM and its generalization performance on the California Housing dataset. As observed, the model maintains stable performance across a broad range of hidden-layer sizes, showing a clear region where increasing the number of nodes does not significantly impact accuracy. However, performance tends to degrade when the network is either too small, leading to underfitting, or excessively large, which can introduce overfitting and numerical instability in the output weight computation.
+
+In practice, this implies that the exact number of hidden nodes in ELM does not need to be heavily tuned. Selecting a width within the observed stable region typically gets near-optimal performance, which supports the authors' claims of low error with fewer hidden nodes. This reinforces one of ELM’s main advantages, being robust and efficient generalization without the need for extensive hyperparameter optimization.
 
 \section{Timeline}
 
@@ -228,7 +246,7 @@ Despite using real datasets, the ELM offers comparable accuracy to the baseline 
 \hline
 Date Range & Task \\
 \hline
-Oct 21–Oct 28 & Understand the original ELM paper thoroughly; set up coding environment; choose dataset. \\
+Oct 21–Oct 28 & Understand the original ELM paper thoroughly; set up coding environment; synthesize dataset. \\
 Oct 29–Nov 10 & Implement ELM algorithm; test on small dataset; debug. \\
 Nov 11–Nov 25 & Implement baseline FNN; run initial comparisons for hidden-node counts; verify author's results on real-world datasets \\
 % Nov 26–Dec 10 & Full parameter sweep: hidden nodes (\{100,500,1000,5000\}), activation functions, regularization; collect results; perform statistical tests. \\
@@ -238,10 +256,10 @@ Dec 20 & Buffer for unexpected delays; finalize deliverables; \\
 \end{tabular}
 \end{table}
 
-Table \ref{tab:timeline} lays out a timeline of deliverables to be completed after October 21, towards the end of the semester. If there are unexpected difficulties building the model or computing the final output layer, a minimum product will be an ELM implementation and validation against the synthesized datasets.
+Table \ref{tab:timeline} lays out a timeline of deliverables to be completed after October 21 until the end of the semester. If there are unexpected difficulties building the model or computing the final output layer, a minimum product will be an ELM implementation and validation against the synthesized datasets.
 
 \section{Conclusion}
-Within this report, we explored the paper presented by Huang \cite{huang2006extreme} and this team, experimenting with the design of an Extreme Learning Machine with its architecture as an SLFN without BP. This project will work to deliver a working implementation of the ELM algorithm, comparison against a conventional neural network baseline, and an analysis of design choices impacting speed and accuracy. If completion of full parameter sweeps is not possible within the timeframe, the minimum deliverable will still consist of a functional ELM implementation, baseline comparison, and a discussion of preliminary findings and potential extensions for future work. This work will help deepen understanding of training-speed vs generalization trade-offs in neural network design, especially in the context of randomly-initialized hidden layers and analytic output solves.
+Within this report, we explored the paper presented by Huang \cite{huang2006extreme} and this team, experimenting with the design of an Extreme Learning Machine with its architecture as an SLFN without BP. This project will work to deliver a working implementation of the ELM algorithm, comparison against a conventional neural network baseline, and an analysis of design choices impacting speed and accuracy. If completion of full parameter sweeps is not possible within the time frame, the minimum deliverable will still consist of a functional ELM implementation, baseline comparison, and a discussion of preliminary findings and potential extensions for future work. This work will help deepen the understanding of training-speed vs generalization trade-offs in neural network design, especially in the context of randomly-initialized hidden layers and analytic output solves.
 
 \newpage
 \bibliographystyle{plain}
