@@ -1,0 +1,363 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Mon Oct 13 09:17:53 2025
+# Process ID         : 6888
+# Current directory  : C:/Users/Icydr/Code/courses/CMPE_140/lab5_mips_processor/lab5_mips_processor.runs/synth_1
+# Command line       : vivado.exe -log mips_fpga.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mips_fpga.tcl
+# Log file           : C:/Users/Icydr/Code/courses/CMPE_140/lab5_mips_processor/lab5_mips_processor.runs/synth_1/mips_fpga.vds
+# Journal file       : C:/Users/Icydr/Code/courses/CMPE_140/lab5_mips_processor/lab5_mips_processor.runs/synth_1\vivado.jou
+# Running On         : DESKTOP-E9HN8NO
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 19045
+# Processor Detail   : Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz
+# CPU Frequency      : 2400 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 68608 MB
+# Swap memory        : 10200 MB
+# Total Virtual      : 78809 MB
+# Available Virtual  : 68377 MB
+#-----------------------------------------------------------
+source mips_fpga.tcl -notrace
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 489.672 ; gain = 211.645
+Command: synth_design -top mips_fpga -part xc7a12ticsg325-1L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a12ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a12ti'
+INFO: [Device 21-403] Loading part xc7a12ticsg325-1L
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 4360
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1160.664 ; gain = 492.086
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'mips_fpga' [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/mips_fpga.v:1]
+INFO: [Synth 8-6157] synthesizing module 'clk_gen' [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/clk_gen.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'clk_gen' (0#1) [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/clk_gen.v:1]
+INFO: [Synth 8-6157] synthesizing module 'button_debouncer' [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/button_debouncer.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'button_debouncer' (0#1) [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/button_debouncer.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mips_top' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/mips/mips_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mips' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/mips/mips.v:1]
+INFO: [Synth 8-6157] synthesizing module 'datapath' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/datapath.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dreg' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/dreg.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'dreg' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/dreg.v:1]
+INFO: [Synth 8-6157] synthesizing module 'adder' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/adder.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'adder' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux2' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/mux2.v:1]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/mux2.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized0' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/mux2.v:1]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized0' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/mux2.v:1]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/regfile.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/regfile.v:1]
+INFO: [Synth 8-6157] synthesizing module 'signext' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/signext.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'signext' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/signext.v:1]
+INFO: [Synth 8-6157] synthesizing module 'alu' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/alu.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/alu.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/alu.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'datapath' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/datapath.v:1]
+INFO: [Synth 8-6157] synthesizing module 'controlunit' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/controlunit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'maindec' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/maindec.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'maindec' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/maindec.v:1]
+INFO: [Synth 8-6157] synthesizing module 'auxdec' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/auxdec.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'auxdec' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/auxdec.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'controlunit' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/controlunit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mips' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/mips/mips.v:1]
+INFO: [Synth 8-6157] synthesizing module 'imem' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/memory/imem.v:1]
+INFO: [Synth 8-3876] $readmem data file 'memfile.dat' is read successfully [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/memory/imem.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'imem' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/memory/imem.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dmem' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/memory/dmem.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'dmem' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/memory/dmem.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mips_top' (0#1) [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/mips/mips_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'hex_to_7seg' [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/hex_to_7seg.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/hex_to_7seg.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'hex_to_7seg' (0#1) [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/hex_to_7seg.v:1]
+INFO: [Synth 8-6157] synthesizing module 'led_mux' [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/led_mux.v:1]
+INFO: [Synth 8-226] default block is never used [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/led_mux.v:20]
+INFO: [Synth 8-6155] done synthesizing module 'led_mux' (0#1) [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/led_mux.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mips_fpga' (0#1) [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/mips_fpga.v:1]
+WARNING: [Synth 8-7129] Port instr[31] in module datapath is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[30] in module datapath is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[29] in module datapath is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[28] in module datapath is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[27] in module datapath is either unconnected or has no load
+WARNING: [Synth 8-7129] Port instr[26] in module datapath is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1267.793 ; gain = 599.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1267.793 ; gain = 599.215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1267.793 ; gain = 599.215
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 1267.793 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/mips_fpga.xdc]
+Finished Parsing XDC File [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/mips_fpga.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Icydr/Downloads/basys3_single_cycle_mips_validation/mips_fpga.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/mips_fpga_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/mips_fpga_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1346.801 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1346.801 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1346.801 ; gain = 678.223
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a12ticsg325-1L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1346.801 ; gain = 678.223
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1346.801 ; gain = 678.223
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-327] inferring latch for variable 'y_reg' [C:/Users/Icydr/Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/alu.v:9]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1346.801 ; gain = 678.223
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 5     
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               16 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 7     
+	  20 Input   32 Bit        Muxes := 1     
+	   4 Input   12 Bit        Muxes := 1     
+	   7 Input    7 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 1     
+	   6 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 40 (col length:40)
+BRAMs: 40 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 1355.941 ; gain = 687.363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+----------------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object                 | Inference | Size (Depth x Width) | Primitives     | 
++------------+----------------------------+-----------+----------------------+----------------+
+|mips_fpga   | mips_top/dmem/ram_reg      | Implied   | 64 x 32              | RAM64X1S x 32  | 
+|mips_fpga   | mips_top/mips/dp/rf/rf_reg | Implied   | 32 x 32              | RAM32M x 18    | 
++------------+----------------------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1481.156 ; gain = 812.578
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1503.270 ; gain = 834.691
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++------------+----------------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object                 | Inference | Size (Depth x Width) | Primitives     | 
++------------+----------------------------+-----------+----------------------+----------------+
+|mips_fpga   | mips_top/dmem/ram_reg      | Implied   | 64 x 32              | RAM64X1S x 32  | 
+|mips_fpga   | mips_top/mips/dp/rf/rf_reg | Implied   | 32 x 32              | RAM32M x 18    | 
++------------+----------------------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[31]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[30]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[29]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[28]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[27]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[26]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[25]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[24]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[23]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[22]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[21]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[20]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[19]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[18]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[17]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[16]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[15]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[14]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[13]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[12]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[11]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[10]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[9]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[8]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[7]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[6]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[5]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[4]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[3]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[2]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[1]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[0]) is unused and will be removed from module mips_fpga.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1515.895 ; gain = 847.316
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1726.656 ; gain = 1058.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1726.656 ; gain = 1058.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1726.656 ; gain = 1058.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1726.656 ; gain = 1058.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1726.656 ; gain = 1058.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1726.656 ; gain = 1058.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |CARRY4   |    44|
+|3     |LUT1     |     2|
+|4     |LUT2     |     5|
+|5     |LUT3     |    53|
+|6     |LUT4     |    28|
+|7     |LUT5     |   187|
+|8     |LUT6     |   233|
+|9     |MUXF7    |     7|
+|10    |RAM32M   |    15|
+|11    |RAM32X1D |     6|
+|12    |RAM64X1S |    32|
+|13    |FDCE     |    30|
+|14    |FDRE     |    68|
+|15    |IBUF     |    12|
+|16    |OBUF     |    13|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 1726.656 ; gain = 1058.078
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 34 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:36 . Memory (MB): peak = 1726.656 ; gain = 979.070
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 1726.656 ; gain = 1058.078
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1735.805 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 104 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1739.480 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 53 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 15 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 6 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 32 instances
+
+Synth Design complete | Checksum: dd2a9d5a
+INFO: [Common 17-83] Releasing license: Synthesis
+59 Infos, 40 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:53 . Memory (MB): peak = 1739.480 ; gain = 1249.809
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1739.480 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Icydr/Code/courses/CMPE_140/lab5_mips_processor/lab5_mips_processor.runs/synth_1/mips_fpga.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file mips_fpga_utilization_synth.rpt -pb mips_fpga_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Oct 13 09:19:00 2025...
