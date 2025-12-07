@@ -1,0 +1,23 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../../Xilinx/2025.1/Vivado/data/rsb/busdef" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/adder.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/alu.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/auxdec.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/controlunit.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/datapath.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/memory/dmem.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/dreg.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/memory/imem.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/control_unit/maindec.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/mips/mips.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/mips/mips_top.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/mux2.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/regfile.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/datapath/signext.v" \
+"../../../../../../../../Downloads/lab5_processor_design_1/single_cycle_mips_source_initial/testbench/tb_mips_top.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
