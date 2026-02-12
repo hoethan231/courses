@@ -13,6 +13,8 @@ ORDERED_OBJS += \
 "./exercise_one_one.o" \
 "./exercise_one_three.o" \
 "./exercise_one_two.o" \
+"./exercise_three.o" \
+"./exercise_two.o" \
 $(GEN_CMDS__FLAG) \
 -Wl,-ldevice.cmd.genlibs \
 -Wl,-llibc.a \
@@ -137,8 +139,8 @@ lab2.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "exercise_one_one.o" "exercise_one_three.o" "exercise_one_two.o" 
-	-$(RM) "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "exercise_one_one.d" "exercise_one_three.d" "exercise_one_two.d" 
+	-$(RM) "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "exercise_one_one.o" "exercise_one_three.o" "exercise_one_two.o" "exercise_three.o" "exercise_two.o" 
+	-$(RM) "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "exercise_one_one.d" "exercise_one_three.d" "exercise_one_two.d" "exercise_three.d" "exercise_two.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

@@ -3,6 +3,8 @@
 "./exercise_one_one.o"
 "./exercise_one_three.o"
 "./exercise_one_two.o"
+"./exercise_three.o"
+"./exercise_two.o"
 -l"./device_linker.cmd"
 -ldevice.cmd.genlibs
 -llibc.a

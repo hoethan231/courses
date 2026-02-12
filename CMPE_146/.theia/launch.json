@@ -1,16 +1,23 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "lab1",
-      "type": "ccs-debug",
-      "request": "launch",
-      "projectInfo": {
-        "name": "lab1",
-        "resourceId": "/lab1"
-      }
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "lab1",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "lab1",
+                "resourceId": "/lab1"
+            }
+        },
+        {
+            "name": "lab2",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "lab2",
+                "resourceId": "/lab2"
+            }
+        }
+    ]
 }
