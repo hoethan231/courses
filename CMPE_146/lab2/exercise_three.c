@@ -11,7 +11,6 @@ int main(void)
         DL_GPIO_RESISTOR_PULL_UP, DL_GPIO_HYSTERESIS_DISABLE,
         DL_GPIO_WAKEUP_DISABLE);
 
-    DL_GPIO_initDigitalOutput(IOMUX_PINCM50);
     DL_GPIO_initDigitalInput(IOMUX_PINCM50);
     DL_GPIO_enableOutput(GPIOB, DL_GPIO_PIN_22);
     DL_GPIO_clearPins(GPIOB, DL_GPIO_PIN_22);

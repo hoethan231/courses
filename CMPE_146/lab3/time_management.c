@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "ti_msp_dl_config.h"
 
-int main(void)
+int time_management(void)
 {
     SYSCFG_DL_init();
     DL_GPIO_enablePower(GPIOB);

@@ -8,5 +8,30 @@
       "directory" : "/Users/mac/Code/courses/CMPE_146/lab3/Debug",
       "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"/Users/mac/Code/courses/CMPE_146/lab3\" -I\"/Users/mac/Code/courses/CMPE_146/lab3/Debug\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
       "file"      : "/Users/mac/Code/courses/CMPE_146/lab3/Debug/ti_msp_dl_config.c"
+   },
+   {
+      "directory" : "/Users/mac/Code/courses/CMPE_146/lab3/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"/Users/mac/Code/courses/CMPE_146/lab3\" -I\"/Users/mac/Code/courses/CMPE_146/lab3/Debug\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "/Users/mac/Code/courses/CMPE_146/lab3/simple_checksum.c"
+   },
+   {
+      "directory" : "/Users/mac/Code/courses/CMPE_146/lab3/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"/Users/mac/Code/courses/CMPE_146/lab3\" -I\"/Users/mac/Code/courses/CMPE_146/lab3/Debug\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "/Users/mac/Code/courses/CMPE_146/lab3/control.c"
+   },
+   {
+      "directory" : "/Users/mac/Code/courses/CMPE_146/lab3/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"/Users/mac/Code/courses/CMPE_146/lab3\" -I\"/Users/mac/Code/courses/CMPE_146/lab3/Debug\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "/Users/mac/Code/courses/CMPE_146/lab3/measurement.c"
+   },
+   {
+      "directory" : "/Users/mac/Code/courses/CMPE_146/lab3/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"/Users/mac/Code/courses/CMPE_146/lab3\" -I\"/Users/mac/Code/courses/CMPE_146/lab3/Debug\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "/Users/mac/Code/courses/CMPE_146/lab3/speedup.c"
+   },
+   {
+      "directory" : "/Users/mac/Code/courses/CMPE_146/lab3/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"/Users/mac/Code/courses/CMPE_146/lab3\" -I\"/Users/mac/Code/courses/CMPE_146/lab3/Debug\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include\" -I\"/Applications/ti/mspm0_sdk_2_09_00_01/source\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"/Applications/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "/Users/mac/Code/courses/CMPE_146/lab3/data_corruption.c"
    }
 ]
