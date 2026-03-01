@@ -3,6 +3,7 @@
 *.exe
 *.zip
 *.venv
+*.gz
 
 CMPE_126/**/*.txt
 CMPE_188/data/
